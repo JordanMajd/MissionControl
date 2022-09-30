@@ -34,8 +34,8 @@ public class Plugin : BasePlugin
     Harmony harmony = new Harmony("com.hellomars.patch");
     harmony.PatchAll();
     Plugin.Log.LogInfo($"Patches applied");
-
-    MountPlugin();
+    HelloComponent sc = AddComponent<HelloComponent>();
+    // MountPlugin();
   }
   async void MountPlugin()
   {
@@ -76,18 +76,15 @@ public class HelloComponent : MonoBehaviour
 
       if (confComp != null)
       {
-        Plugin.Log.LogInfo("We have conf control!");
+        Plugin.Log.LogInfo("Creating BigWheel");
 
         Il2CppReferenceArray<PartSO> partsList = confComp.partList.parts;
-        Plugin.Log.LogInfo("Iterating Parts");
         var wheelsList = partsList.OfType<WheelSO>();
         PartSO c = partsList.Where(part => part.name == "05Wheel1").First();
         WheelSO oldPart = c.Cast<WheelSO>();
-        Plugin.Log.LogInfo(oldPart.name);
 
-
-        bigWheel = ScriptableObject.CreateInstance<WheelSO>();
         // PartsSO
+        bigWheel = ScriptableObject.CreateInstance<WheelSO>();
         bigWheel.title = "Big Wheel";
         bigWheel.description = "Big Wheel";
         bigWheel.name = "100BigWheel";
@@ -202,9 +199,9 @@ class ConfPatch
 // [HarmonyPatch(typeof(AssetBundle))]
 // [HarmonyPatch(nameof(AssetBundle.Load))]
 // [HarmonyPatch(new Type[] { typeof(string) })]
-[HarmonyPatch(typeof(AssetBundle))]
-class AssetBundlerPatch
-{
+// [HarmonyPatch(typeof(AssetBundle))]
+// class AssetBundlerPatch
+// {
   // static IEnumerable<MethodBase> TargetMethods()
   // {
 
@@ -261,7 +258,7 @@ class AssetBundlerPatch
   //   }
   // }
 
-}
+// }
 // [HarmonyPatch(typeof(Application))]
 
 // class AppPatch
@@ -326,20 +323,20 @@ class AssetBundlerPatch
 // }
 
 
-[HarmonyPatch(typeof(SceneManager))]
-public class Patch_SceneManger
-{
-  [HarmonyPostfix]
-  [HarmonyPatch(nameof(SceneManager.LoadScene), new Type[] { typeof(string) })]
-  static void LoadSceneString_PostFix(string sceneName)
-  {
-    Plugin.Log.LogInfo($"Patch_SceneManger SceneLoaded: {sceneName}");
-  }
+// [HarmonyPatch(typeof(SceneManager))]
+// public class Patch_SceneManger
+// {
+//   [HarmonyPostfix]
+//   [HarmonyPatch(nameof(SceneManager.LoadScene), new Type[] { typeof(string) })]
+//   static void LoadSceneString_PostFix(string sceneName)
+//   {
+//     Plugin.Log.LogInfo($"Patch_SceneManger SceneLoaded: {sceneName}");
+//   }
 
-  [HarmonyPostfix]
-  [HarmonyPatch(nameof(SceneManager.LoadScene), new Type[] { typeof(int) })]
-  static void LoadSceneInt_PostFix(int sceneBuildIndex)
-  {
-    Plugin.Log.LogInfo($"Patch_SceneManger SceneLoaded: {sceneBuildIndex}");
-  }
-}
+//   [HarmonyPostfix]
+//   [HarmonyPatch(nameof(SceneManager.LoadScene), new Type[] { typeof(int) })]
+//   static void LoadSceneInt_PostFix(int sceneBuildIndex)
+//   {
+//     Plugin.Log.LogInfo($"Patch_SceneManger SceneLoaded: {sceneBuildIndex}");
+//   }
+// }
