@@ -6,16 +6,22 @@ Mission Control is set of modding tools and utilities for [Mars: First Logistics
 
 ## Getting Started
 
-1. Install BepinEx 6, IL2CPP
-2. Install UnityExplorer as an BepinEx  IL2CPP plugin 
-3. In order to get UnityExplorer running however, you may need a nightly build of UniverseLib
+TODO, better insructions
 
-## Features
+1. Install BepinEx 6, IL2CPP
+2. Install universe lib as an IL2CPP bepinex plugin
+2. Install this as a bepinex plugin
+
+### Features
 
 - Asset Utils: Tools to load assets, textures, meshes
 - Part Manager: Tool to add new parts to the game
 
-## Roadmap:
+Current work:
+
+- Serializing JSON into generic parts
+
+### Future Work
 
 - Cheat Manager
 - Contract Manager
@@ -32,4 +38,4 @@ TBD
 
 ## License 
 
-TBD
+- MIT, see [/LICENSE] for more information.
