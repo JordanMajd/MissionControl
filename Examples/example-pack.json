@@ -11,7 +11,9 @@
       "mass": 32,
       "includeInDemo": true,
       "order": 100,
-      "ID": 100
+      "ID": 100,
+      "mesh": "bundlename/tire_v3",
+      "icon": "bundlename/tire_v3.png"
     }
   ]
 }
