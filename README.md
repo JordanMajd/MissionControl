@@ -38,4 +38,4 @@ TBD
 
 ## License 
 
-- MIT, see [/LICENSE] for more information.
+- MIT, see [LICENSE](/LICENSE) for more information.
