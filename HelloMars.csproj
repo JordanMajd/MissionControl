@@ -14,24 +14,21 @@
     <RootNamespace>HelloMars</RootNamespace>
   </PropertyGroup>
 
+
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\test.txt" />
+    <EmbeddedResource Include="Resources\tire.unity3d" />
+    <EmbeddedResource Include="Resources\resources.assets" />
+    <EmbeddedResource Include="Resources\sharedassets0.assets" />
+    <!-- <Content Include="Resources\*.*">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content> -->
+  </ItemGroup>
+
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
   </ItemGroup>
-  <!-- <ItemGroup>
-    <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\unity-libs\UnityEngine.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.CoreModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\unity-libs\UnityEngine.CoreModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\unity-libs\UnityEngine.PhysicsModule.dll</HintPath>
-    </Reference>
-    <Reference Include="UnityEngine.IMGUIModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\unity-libs\UnityEngine.IMGUIModule.dll</HintPath>
-    </Reference>
-  </ItemGroup> -->
   <ItemGroup>
     <Reference Include="Il2Cppmscorlib">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
@@ -41,6 +38,9 @@
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
+    </Reference>
+  <Reference Include="UniverseLib">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\plugins\sinai-dev-UnityExplorer\UniverseLib.IL2CPP.Interop.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
