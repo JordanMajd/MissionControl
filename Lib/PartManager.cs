@@ -102,7 +102,7 @@ public class PartsManager : MonoBehaviour
         bigWheelPrefab.transform.localScale = new Vector3(4.0f, 4.0f, 4.0f);
         MeshFilter mf = bigWheelPrefab.GetComponentInChildren<MeshFilter>();
         if(mf != null) {
-          mf.mesh = Utils.Assets.LoadAsset<Mesh>("legobundle", "tire_v3");
+          mf.mesh = Utils.Assets.LoadAsset<Mesh>("examplebundle", "tire_v3");
         }
         MeshRenderer mr = bigWheelPrefab.GetComponentInChildren<MeshRenderer>();
 

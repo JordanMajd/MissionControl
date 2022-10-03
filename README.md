@@ -4,15 +4,14 @@ Mission Control is set of modding tools and utilities for [Mars: First Logistics
 
 ⚠ This softwave is experimental ALPHA, we are working towards a stable API but we are nowhere near. But right now we are just thorwing things at walls and seeing what sticks. Structure will come with time. Expect breaking changes.
 
-⚠ ⚠ In it's current state it is referencing asset bundles that are not in the repository. This should be resolved shortly.
-
 ## Getting Started
 
 TODO, real documenation
 
 1. Install BepinEx 6, IL2CPP
 2. Install universe lib as an IL2CPP bepinex plugin
-2. Install this as a bepinex plugin
+3. Install this as a bepinex plugin
+4. Copy `Examples/examplebundle` into gamedata for the custom mesh!
 
 ### Features
 
