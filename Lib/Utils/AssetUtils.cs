@@ -28,10 +28,7 @@ static class Assets
   public static Dictionary<string, UniverseLib.AssetBundle> cachedBundles = new Dictionary<string, UniverseLib.AssetBundle>();
   public static T LoadAsset<T>(string bundleName, string assetName) where T : UnityEngine.Object
   {
-    MissionControlPlugin.Log.LogError($"Loading {bundleName}");
-
     UniverseLib.AssetBundle assetBundle;
-    MissionControlPlugin.Log.LogError($"1");
     if (!cachedBundles.TryGetValue(bundleName, out assetBundle))
     {
       string path = Path.Combine(BepInEx.Paths.GameDataPath, bundleName);
@@ -41,12 +38,9 @@ static class Assets
         MissionControlPlugin.Log.LogError($"LoadAsset, file {path} does not exists");
         return null;
       }
-
-      MissionControlPlugin.Log.LogError($"Loading {bundleName} from {path}");
       assetBundle = UniverseLib.AssetBundle.LoadFromFile(path);
       cachedBundles.Add(bundleName, assetBundle);
     }
-    MissionControlPlugin.Log.LogError($"2");
     return assetBundle.LoadAsset<T>(assetName);
   }
 
