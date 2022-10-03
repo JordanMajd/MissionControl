@@ -2,24 +2,23 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>HelloMars</AssemblyName>
-    <Description>My first plugin</Description>
-    <Version>1.0.0</Version>
+    <AssemblyName>MissionControl</AssemblyName>
+    <Description>Mission Control is set of modding tools and utilities for Mars: First Logistics Demo</Description>
+    <Version>0.0.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
       https://api.nuget.org/v3/index.json;
       https://nuget.bepinex.dev/v3/index.json
     </RestoreAdditionalProjectSources>
-    <RootNamespace>HelloMars</RootNamespace>
+    <RootNamespace>MissionControl</RootNamespace>
   </PropertyGroup>
 
-
   <ItemGroup>
-    <EmbeddedResource Include="Resources\test.txt" />
+    <!-- <EmbeddedResource Include="Resources\test.txt" />
     <EmbeddedResource Include="Resources\tire.unity3d" />
     <EmbeddedResource Include="Resources\resources.assets" />
-    <EmbeddedResource Include="Resources\sharedassets0.assets" />
+    <EmbeddedResource Include="Resources\sharedassets0.assets" /> -->
     <!-- <Content Include="Resources\*.*">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content> -->
@@ -44,6 +43,9 @@
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
+    </Reference>
+    <Reference Include="UnityEngine.JSONSerializeModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

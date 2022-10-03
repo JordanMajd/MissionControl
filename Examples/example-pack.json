@@ -1,0 +1,17 @@
+{
+  "parts": [
+    {
+      "parent": "05Wheel1",
+      "title": "Big Wheel",
+      "description": "Big Wheel",
+      "name": "100BigWheel",
+      "titleLocTerm": "Parts/BigWheel",
+      "titleTranslation": "Big Wheel",
+      "cost": 600,
+      "mass": 32,
+      "includeInDemo": true,
+      "order": 100,
+      "ID": 100
+    }
+  ]
+}
