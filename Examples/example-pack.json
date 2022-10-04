@@ -24,7 +24,10 @@
       "wheelSpring": 8000,
       "applyForceRadius": 2,
       "wheelWidth": 4, 
-      "wheelRadius": 4
+      "wheelRadius": 4,
+      "scale": 4,
+      "mesh": "tire_v3",
+      "meshBundle": "examplebundle"
     },
     {
       "type": "PartSO",
@@ -38,7 +41,8 @@
       "mass": 1,
       "includeInDemo": true,
       "order": 101,
-      "ID": 101
+      "ID": 101,
+      "scale": 2
     }
   ]
 }

@@ -58,21 +58,18 @@ public class PartsManager : MonoBehaviour
     prefab.hideFlags = HideFlags.HideAndDontSave;
     prefab.name = node["name"];
 
-    // TODO load scale and mesh from json
-    prefab.transform.localScale = new Vector3(4.0f, 4.0f, 4.0f);
-    MeshFilter mf = prefab.GetComponentInChildren<MeshFilter>();
-    if (mf != null)
-    {
-      mf.mesh = Utils.Assets.LoadAsset<Mesh>("examplebundle", "tire_v3");
+    if(node["scale"] != null) {
+      float scale = node["scale"].AsFloat;
+      prefab.transform.localScale = new Vector3(scale, scale, scale);
     }
-    MeshRenderer mr = prefab.GetComponentInChildren<MeshRenderer>();
-    if (mr != null)
-    {
-      // Doesn't really do anything
-      var parentMR = parent.prefab.GetComponentInChildren<MeshRenderer>();
-      var tex = parentMR.material.GetTexture("_MainTex");
-      mr.material.SetTexture("_MainTex", tex);
+    if(node["mesh"] != null && node["meshBundle"] != null) {
+      MeshFilter mf = prefab.GetComponentInChildren<MeshFilter>();
+      if (mf != null)
+      {
+        mf.mesh = Utils.Assets.LoadAsset<Mesh>(node["meshBundle"], "tire_v3");
+      }
     }
+
 
     PartSO part = partType switch
     {

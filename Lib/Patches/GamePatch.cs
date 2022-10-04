@@ -15,9 +15,10 @@ public class GamePatch: MonoBehaviour
   private class Patches
   {
 
+    [HarmonyPostfix]
     [HarmonyPatch(typeof(Game))]
     [HarmonyPatch(nameof(Game.Init))]
-    static void Postfix(Game __instance)
+    static void Postfix_GameInit(Game __instance)
     {
       try
       {
@@ -32,6 +33,28 @@ public class GamePatch: MonoBehaviour
         MissionControlPlugin.Log.LogWarning($"Exception in patch of void Game::Init():\n{ex}");
       }
     }
+
+    // [HarmonyPostfix]
+    // [HarmonyPatch(typeof(Conf))]
+    // [HarmonyPatch(nameof(Conf.Start))]
+    // static void Postfix_ConfStart(Conf __instance)
+    // {
+    //   try
+    //   {
+    //     foreach(var part in __instance.partList.parts) {
+    //       MeshRenderer mr = part.prefab.GetComponentInChildren<MeshRenderer>();
+    //       Texture mainTex = mr.material.GetTexture("_MainTex");
+    //       if(mainTex != null){
+    //         MissionControlPlugin.Log.LogInfo($"texwidth: {mainTex.width}");
+    //       }
+    //     }
+    //   }
+    //   catch (System.Exception ex)
+    //   {
+    //     MissionControlPlugin.Log.LogWarning($"Exception in patch of void Conf::Init():\n{ex}");
+    //   }
+    // }
+
   }
 
 }
