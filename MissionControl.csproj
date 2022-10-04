@@ -27,6 +27,7 @@
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
+    <!-- <PackageReference Include="SimpleJson" Version="0.38.0" /> -->
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Il2Cppmscorlib">

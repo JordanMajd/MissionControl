@@ -12,8 +12,18 @@
       "includeInDemo": true,
       "order": 100,
       "ID": 100,
-      "mesh": "bundlename/tire_v3",
-      "icon": "bundlename/tire_v3.png"
+      "motorForce": 1000,
+      "throttleSpeed": 1,
+      "sideFrictionCoef": 12,
+      "slipForceBoost": 0.25,
+      "stickyForce": 100,
+      "wheelTreadFreq": 2,
+      "wheelTreadOffset": 0,
+      "wheelDamper": 0.98,
+      "wheelSpring": 8000,
+      "applyForceRadius": 2,
+      "wheelWidth": 4, 
+      "wheelRadius": 4
     }
   ]
 }

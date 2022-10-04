@@ -1,20 +1,7 @@
-using BepInEx;
-using BepInEx.Logging;
-using BepInEx.Unity.IL2CPP;
 
-using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Events;
-using HarmonyLib;
-
-using Il2CppInterop.Runtime.InteropTypes.Arrays;
-using System.Linq;
-using System.Reflection;
 using System.Collections.Generic;
-using System.Threading.Tasks;
 using System.IO;
-
-using Il2CppSystem;
+using SimpleJSON;
 
 namespace MissionControl.Utils;
 
@@ -45,7 +32,7 @@ static class Assets
   }
 
 
-  public static Il2CppSystem.Object LoadJSON(string jsonName, Type type)
+  public static JSONNode LoadJSON(string jsonName)
   {
     string path = Path.Combine(BepInEx.Paths.GameDataPath, jsonName);
 
@@ -56,6 +43,7 @@ static class Assets
     }
 
     string jsonText = File.ReadAllText(path);
-    return UnityEngine.JsonUtility.FromJson(jsonText, type);
+
+    return JSON.Parse(jsonText);
   }
 }
