@@ -54,8 +54,6 @@ public class PartsManager : MonoBehaviour
     PartSO c = conf.partList.parts.Where(part => part.name == parentName).First();
     WheelSO parent = c.Cast<WheelSO>();
 
-    MissionControlPlugin.Log.LogInfo($"parentName {parentName}");
-
     // Setup Prefab
     GameObject prefab = GameObject.Instantiate(parent.prefab);
     // keep reference to prevent it from going out of context

@@ -20,7 +20,7 @@ TODO, real documenation
 
 Current work:
 
-- Serializing JSON into generic parts
+- Serializing JSON into generic parts, right now we can serialize a list of `WheelSO` into the parts list!
 
 ### Future Work
 
