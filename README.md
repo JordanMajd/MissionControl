@@ -6,7 +6,7 @@ Mission Control is set of modding tools and utilities for [Mars: First Logistics
 
 ## Getting Started
 
-TODO, real documenation
+TODO, Real documenation
 
 1. Install BepinEx 6, IL2CPP
 2. Install universe lib as an IL2CPP bepinex plugin
@@ -16,11 +16,13 @@ TODO, real documenation
 ### Features
 
 - Asset Utils: Tools to load assets, textures, meshes
-- Part Manager: Tool to add new parts to the game
-
-Current work:
-
-- Serializing JSON into generic parts, right now we can serialize a list of `WheelSO` into the parts list!
+- Part Manager: Tools to import custom part packs into the game
+  - Status: Proof of concept.
+  - Limitations:
+    - Can only import wheels right now
+    - Parts can have custom meshes, but right now that is hard coded and I don't have materials set up for it yet
+    - Localization is broken
+    - No custom part icons yet
 
 ### Future Work
 
