@@ -94,7 +94,7 @@ public class PartsManager : MonoBehaviour
       MeshFilter mf = prefab.GetComponentInChildren<MeshFilter>();
       if (mf != null)
       {
-        mf.mesh = Utils.Assets.LoadAsset<Mesh>(node["meshBundle"], "tire_v3");
+        mf.mesh = Utils.Assets.LoadAsset<Mesh>(node["meshBundle"], node["mesh"]);
       }
       MeshRenderer mr = prefab.GetComponentInChildren<MeshRenderer>();
       if(mr != null) {
