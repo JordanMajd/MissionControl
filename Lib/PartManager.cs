@@ -59,10 +59,7 @@ public class PartsManager : MonoBehaviour
     prefab.name = node["name"];
 
     // TODO load scale and mesh from json
-    // Testing, let's only make the wheels big
-    if(partType == "WheelSO") {
-      prefab.transform.localScale = new Vector3(4.0f, 4.0f, 4.0f);
-    }
+    prefab.transform.localScale = new Vector3(4.0f, 4.0f, 4.0f);
     MeshFilter mf = prefab.GetComponentInChildren<MeshFilter>();
     if (mf != null)
     {
