@@ -1,6 +1,7 @@
 {
   "parts": [
     {
+      "type": "WheelSO",
       "parent": "05Wheel1",
       "title": "Big Wheel",
       "description": "Big Wheel",
@@ -24,6 +25,20 @@
       "applyForceRadius": 2,
       "wheelWidth": 4, 
       "wheelRadius": 4
+    },
+    {
+      "type": "PartSO",
+      "parent": "01Hub1",
+      "title": "Brick",
+      "description": "Brick",
+      "name": "101Brick",
+      "titleLocTerm": "Parts/Brick",
+      "titleTranslation": "Brick",
+      "cost": 1,
+      "mass": 1,
+      "includeInDemo": true,
+      "order": 101,
+      "ID": 101
     }
   ]
 }

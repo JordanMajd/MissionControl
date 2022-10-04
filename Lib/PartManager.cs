@@ -3,14 +3,17 @@ using UnityEngine;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System.Linq;
 using System.Collections.Generic;
+using System;
 using SimpleJSON;
 
 namespace MissionControl;
+
+
 public class PartsManager : MonoBehaviour
 {
   private Conf conf;
-  List<PartSO> partsList = new List<PartSO>();
-  List<GameObject> partsPrefabs = new List<GameObject>();
+  private List<PartSO> partsList = new List<PartSO>();
+  private List<GameObject> partsPrefabs = new List<GameObject>();
 
   public void Awake()
   {
@@ -27,13 +30,6 @@ public class PartsManager : MonoBehaviour
     // TODO only do if config is set to load example asset pack
     var newParts = this.LoadPartsFile("example-pack.json");
     AddParts(newParts);
-
-    // TODO move to cheats manager
-    if (Conf.g != null)
-    {
-      Conf.g.partsInventory.UnlockAllParts();
-      MissionControlPlugin.Log.LogInfo("All parts unlocked");
-    }
   }
 
   public List<PartSO> LoadPartsFile(string partsPath)
@@ -51,12 +47,11 @@ public class PartsManager : MonoBehaviour
   {
     // Get Parent Object
     string parentName = node["parent"];
-    PartSO c = conf.partList.parts.Where(part => part.name == parentName).First();
-    WheelSO parent = c.Cast<WheelSO>();
+    PartSO parent = conf.partList.parts.Where(part => part.name == parentName).First();
 
     // Setup Prefab
+    // instantiate and store a ref to prevent from going out of context
     GameObject prefab = GameObject.Instantiate(parent.prefab);
-    // keep reference to prevent it from going out of context
     partsPrefabs.Add(prefab);
     prefab.hideFlags = HideFlags.HideAndDontSave;
     prefab.name = node["name"];
@@ -71,41 +66,51 @@ public class PartsManager : MonoBehaviour
     {
       var parentMR = parent.prefab.GetComponentInChildren<MeshRenderer>();
       var tex = parentMR.material.GetTexture("_MainTex");
-      mr.material.SetTexture("_MainText", tex);
+      mr.material.SetTexture("_MainTex", tex);
     }
 
-    // Get new
-    WheelSO wheel = CreateWheelSOInstance(node, parent, prefab);
-    // Stash ref so it doesn't fall out of context
-    partsList.Add(wheel);
-    return wheel;
+    string partType = node["type"];
+    PartSO part = partType switch
+    {
+      "WheelSO" => CreateWheelSO(node, parent.Cast<WheelSO>(), prefab),
+      _ => CreatePartSO<PartSO>(node, parent, prefab),
+    };
+
+    // save ref so it doesn't fall out of context
+    partsList.Add(part);
+    return part;
   }
 
-
-  private WheelSO CreateWheelSOInstance(JSONNode wheelNode, WheelSO parent, GameObject prefab)
+  private T CreatePartSO<T>(JSONNode wheelNode, PartSO parent, GameObject prefab) where T : PartSO
   {
-    WheelSO newWheel = ScriptableObject.CreateInstance<WheelSO>();
-
+    T newPart = ScriptableObject.CreateInstance<T>();
     // PartSO
-    newWheel.title = wheelNode["title"];
-    newWheel.description = wheelNode["description"];
-    newWheel.name = wheelNode["name"];
-    newWheel.titleLocTerm = wheelNode["titleLocTerm"];
-    newWheel.titleTranslation = wheelNode["titleTranslation"];
-    newWheel.cost = wheelNode["cost"].AsInt;
-    newWheel.mass = wheelNode["mass"].AsInt;
-    newWheel.includeInDemo = wheelNode["includeInDemo"].AsBool;
-    newWheel.order = wheelNode["order"].AsInt;
-    newWheel.ID = wheelNode["ID"].AsInt;
+    newPart.title = wheelNode["title"];
+    newPart.description = wheelNode["description"];
+    newPart.name = wheelNode["name"];
+    newPart.titleLocTerm = wheelNode["titleLocTerm"];
+    newPart.titleTranslation = wheelNode["titleTranslation"];
+    newPart.cost = wheelNode["cost"].AsInt;
+    newPart.mass = wheelNode["mass"].AsInt;
+    newPart.includeInDemo = wheelNode["includeInDemo"].AsBool;
+    newPart.order = wheelNode["order"].AsInt;
+    newPart.ID = wheelNode["ID"].AsInt;
 
     // Prefab
-    newWheel.prefab = prefab;
+    newPart.prefab = prefab;
 
-    // PartSO inherits 
-    newWheel.attachmentPoints = parent.attachmentPoints;
-    newWheel.meshGOPaths = parent.meshGOPaths;
-    newWheel.iconTex = parent.iconTex;
-    newWheel.actions = parent.actions;
+    // inherits
+    newPart.attachmentPoints = parent.attachmentPoints;
+    newPart.meshGOPaths = parent.meshGOPaths;
+    newPart.iconTex = parent.iconTex;
+    newPart.actions = parent.actions;
+
+    return newPart;
+  }
+
+  private WheelSO CreateWheelSO(JSONNode wheelNode, WheelSO parent, GameObject prefab)
+  {
+    WheelSO newWheel = CreatePartSO<WheelSO>(wheelNode, parent, prefab);
 
     // WheelSO
     newWheel.motorForce = wheelNode["motorForce"].AsFloat;

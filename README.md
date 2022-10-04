@@ -19,10 +19,11 @@ TODO, Real documenation
 - Part Manager: Tools to import custom part packs into the game
   - Status: Proof of concept.
   - Limitations:
-    - Can only import wheels right now
+    - Can import `PartSO` and `WheelSO`, other types to follow
     - Parts can have custom meshes, but right now that is hard coded and I don't have materials set up for it yet
     - Localization is broken
     - No custom part icons yet
+- Unlocks all parts and gives 999 of each for testing purposes (will remove later and move to cheat manager)
 
 ### Future Work
 
