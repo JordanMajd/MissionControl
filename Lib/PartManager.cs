@@ -14,6 +14,7 @@ public class PartsManager : MonoBehaviour
   private Conf conf;
   private List<PartSO> partsList = new List<PartSO>();
   private List<GameObject> partsPrefabs = new List<GameObject>();
+  private List<PartSO.Action> actionsList = new List<PartSO.Action>();
 
   public void Awake()
   {
@@ -45,13 +46,40 @@ public class PartsManager : MonoBehaviour
 
   public PartSO ParsePart(JSONNode node)
   {
-    string partType = node["type"];
 
     // Get Parent Object
     string parentName = node["parent"];
     PartSO parent = conf.partList.parts.Where(part => part.name == parentName).First();
 
-    // Setup Prefab
+    string partType = node["type"];
+    PartSO part = partType switch
+    {
+      "WheelSO" => CreateWheelSO(node, parent.Cast<WheelSO>()),
+      // "HornSO" => CreateHornSO(node, parentefab),
+      _ => CreatePartSO<PartSO>(node, parent),
+    };
+
+    // save ref so it doesn't fall out of context
+    partsList.Add(part);
+    return part;
+  }
+
+  private T CreatePartSO<T>(JSONNode node, PartSO parent) where T : PartSO
+  {
+    T newPart = ScriptableObject.CreateInstance<T>();
+    // PartSO
+    newPart.title = node["title"];
+    newPart.description = node["description"];
+    newPart.name = node["name"];
+    newPart.titleLocTerm = node["titleLocTerm"];
+    newPart.titleTranslation = node["titleTranslation"];
+    newPart.cost = node["cost"].AsInt;
+    newPart.mass = node["mass"].AsInt;
+    newPart.includeInDemo = node["includeInDemo"].AsBool;
+    newPart.order = node["order"].AsInt;
+    newPart.ID = node["ID"].AsInt;
+
+    // Prefab
     // instantiate and store a ref to prevent from going out of context
     GameObject prefab = GameObject.Instantiate(parent.prefab);
     partsPrefabs.Add(prefab);
@@ -68,36 +96,12 @@ public class PartsManager : MonoBehaviour
       {
         mf.mesh = Utils.Assets.LoadAsset<Mesh>(node["meshBundle"], "tire_v3");
       }
+      MeshRenderer mr = prefab.GetComponentInChildren<MeshRenderer>();
+      if(mr != null) {
+        Material testMaterial = Utils.Assets.LoadAsset<Material>(node["meshBundle"], "TestMat");
+        mr.SetMaterial(testMaterial);
+      }
     }
-
-
-    PartSO part = partType switch
-    {
-      "WheelSO" => CreateWheelSO(node, parent.Cast<WheelSO>(), prefab),
-      _ => CreatePartSO<PartSO>(node, parent, prefab),
-    };
-
-    // save ref so it doesn't fall out of context
-    partsList.Add(part);
-    return part;
-  }
-
-  private T CreatePartSO<T>(JSONNode wheelNode, PartSO parent, GameObject prefab) where T : PartSO
-  {
-    T newPart = ScriptableObject.CreateInstance<T>();
-    // PartSO
-    newPart.title = wheelNode["title"];
-    newPart.description = wheelNode["description"];
-    newPart.name = wheelNode["name"];
-    newPart.titleLocTerm = wheelNode["titleLocTerm"];
-    newPart.titleTranslation = wheelNode["titleTranslation"];
-    newPart.cost = wheelNode["cost"].AsInt;
-    newPart.mass = wheelNode["mass"].AsInt;
-    newPart.includeInDemo = wheelNode["includeInDemo"].AsBool;
-    newPart.order = wheelNode["order"].AsInt;
-    newPart.ID = wheelNode["ID"].AsInt;
-
-    // Prefab
     newPart.prefab = prefab;
 
     // inherits
@@ -109,23 +113,42 @@ public class PartsManager : MonoBehaviour
     return newPart;
   }
 
-  private WheelSO CreateWheelSO(JSONNode wheelNode, WheelSO parent, GameObject prefab)
+  // Doesn't work :C
+  private HornSO CreateHornSO(JSONNode node, PartSO parent) {
+    HornSO newHorn = CreatePartSO<HornSO>(node, parent);
+    List<PartSO.Action> lilActions = new List<PartSO.Action>();
+
+    PartSO.Action action = new PartSO.Action();
+    action.action = Control.Action.Horn;
+    action.actionName = "Honk";
+    action.locTerm = "Actions/Horn";
+    lilActions.Add(action);
+    newHorn.actions = lilActions.ToArray();
+
+    // don't let it fall out of reference
+    actionsList.Add(action);
+
+
+    return newHorn;
+  }
+
+  private WheelSO CreateWheelSO(JSONNode node, WheelSO parent)
   {
-    WheelSO newWheel = CreatePartSO<WheelSO>(wheelNode, parent, prefab);
+    WheelSO newWheel = CreatePartSO<WheelSO>(node, parent);
 
     // WheelSO
-    newWheel.motorForce = wheelNode["motorForce"].AsFloat;
-    newWheel.throttleSpeed = wheelNode["throttleSpeed"].AsFloat;
-    newWheel.sideFrictionCoef = wheelNode["sideFrictionCoef"].AsFloat;
-    newWheel.slipForceBoost = wheelNode["slipForceBoost"].AsFloat;
-    newWheel.stickyForce = wheelNode["stickyForce"].AsFloat;
-    newWheel.wheelTreadFreq = wheelNode["wheelTreadFreq"].AsFloat;
-    newWheel.wheelTreadOffset = wheelNode["wheelTreadOffset"].AsFloat;
-    newWheel.wheelDamper = wheelNode["wheelDamper"].AsFloat;
-    newWheel.wheelSpring = wheelNode["wheelSpring"].AsFloat;
-    newWheel.applyForceRadius = wheelNode["applyForceRadius"].AsFloat;
-    newWheel.wheelWidth = wheelNode["wheelWidth"].AsFloat;
-    newWheel.wheelRadius = wheelNode["wheelRadius"].AsFloat;
+    newWheel.motorForce = node["motorForce"].AsFloat;
+    newWheel.throttleSpeed = node["throttleSpeed"].AsFloat;
+    newWheel.sideFrictionCoef = node["sideFrictionCoef"].AsFloat;
+    newWheel.slipForceBoost = node["slipForceBoost"].AsFloat;
+    newWheel.stickyForce = node["stickyForce"].AsFloat;
+    newWheel.wheelTreadFreq = node["wheelTreadFreq"].AsFloat;
+    newWheel.wheelTreadOffset = node["wheelTreadOffset"].AsFloat;
+    newWheel.wheelDamper = node["wheelDamper"].AsFloat;
+    newWheel.wheelSpring = node["wheelSpring"].AsFloat;
+    newWheel.applyForceRadius = node["applyForceRadius"].AsFloat;
+    newWheel.wheelWidth = node["wheelWidth"].AsFloat;
+    newWheel.wheelRadius = node["wheelRadius"].AsFloat;
 
     // WheelSO Inherits
     newWheel.impactEventPath = parent.impactEventPath;
