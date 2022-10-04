@@ -45,6 +45,8 @@ public class PartsManager : MonoBehaviour
 
   public PartSO ParsePart(JSONNode node)
   {
+    string partType = node["type"];
+
     // Get Parent Object
     string parentName = node["parent"];
     PartSO parent = conf.partList.parts.Where(part => part.name == parentName).First();
@@ -55,7 +57,12 @@ public class PartsManager : MonoBehaviour
     partsPrefabs.Add(prefab);
     prefab.hideFlags = HideFlags.HideAndDontSave;
     prefab.name = node["name"];
-    prefab.transform.localScale = new Vector3(4.0f, 4.0f, 4.0f);
+
+    // TODO load scale and mesh from json
+    // Testing, let's only make the wheels big
+    if(partType == "WheelSO") {
+      prefab.transform.localScale = new Vector3(4.0f, 4.0f, 4.0f);
+    }
     MeshFilter mf = prefab.GetComponentInChildren<MeshFilter>();
     if (mf != null)
     {
@@ -64,12 +71,12 @@ public class PartsManager : MonoBehaviour
     MeshRenderer mr = prefab.GetComponentInChildren<MeshRenderer>();
     if (mr != null)
     {
+      // Doesn't really do anything
       var parentMR = parent.prefab.GetComponentInChildren<MeshRenderer>();
       var tex = parentMR.material.GetTexture("_MainTex");
       mr.material.SetTexture("_MainTex", tex);
     }
 
-    string partType = node["type"];
     PartSO part = partType switch
     {
       "WheelSO" => CreateWheelSO(node, parent.Cast<WheelSO>(), prefab),
