@@ -1,4 +1,4 @@
-# Modding Mars First Logistics
+# Modding Mars First Logistics Demo
 
 ⚠ Do at your own risk. It is recommended to back up the game before modifying ⚠
 
@@ -22,9 +22,9 @@ Here are instructions on how to install mods
 
 ### Setup Mission Control
 
-How to install this mod TODO.
-
-In the meantime see [README.md](/README.md) for instructions on compiling it yourself.
+TODO: How to install [Mission Control](https://github.com/JordanMajd/MissionControl)
+- TODO publish release
+- If you are comfortable running and compiling code, see [README.md](/README.md) for instructions building the mod yourself
 
 ### Setup Unity Explorer
 
