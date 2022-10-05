@@ -6,12 +6,16 @@ Mission Control is set of modding tools and utilities for [Mars: First Logistics
 
 ## Getting Started
 
-TODO, Real documenation
+TODO: real documenation
 
-1. Install BepinEx 6, IL2CPP
-2. Install universe lib as an IL2CPP bepinex plugin
-3. Install this as a bepinex plugin
-4. Copy `Examples/examplebundle` into gamedata for the custom mesh!
+1. Install [BepinEx v6 IL2CPP](https://builds.bepinex.dev/projects/bepinex_be)
+1. Install [UniverseLib IL2CPP](https://github.com/sinai-dev/UniverseLib)
+1. Build this running `dotnet build` then copy the dll into the bepinx plugin directory. This can be be done by running `./build`
+
+Optional steps:
+
+- Copy `Examples/examplebundle`, into your gamedata folder to test custom meshes and parts. This can be done manually or by running `./copy_examples.ps1`)
+- If you are developing your own mod I highly suggest install [UnityExplorer, IL2CPP version](https://github.com/sinai-dev/UnityExplorer)
 
 ### Features
 
