@@ -96,7 +96,7 @@ public class PartsManager : MonoBehaviour
       {
         mf.mesh = Utils.Assets.LoadAsset<Mesh>(node["meshBundle"], node["mesh"]);
       }
-      MeshRenderer mr = prefab.GetComponentInChildren<MeshRenderer>();
+      // MeshRenderer mr = prefab.GetComponentInChildren<MeshRenderer>();
       // if(mr != null) {
       //   Material testMaterial = Utils.Assets.LoadAsset<Material>(node["meshBundle"], "TestMat");
       //   mr.SetMaterial(testMaterial);
