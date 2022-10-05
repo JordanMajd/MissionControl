@@ -8,7 +8,8 @@ These instructions are for Windows, however this works for all platforms, you'll
 
 In order to install any mods, we must first install Bepinex:
 
-1. Download the latest BepInEx Unity (IL2CPP) for Windows (x64) from [bepninex builds](https://builds.bepinex.dev/projects/bepinex_be) (under the artifacts section)
+1. Download the latest BepInEx Unity (**IL2CPP version not mono**) for Windows (x64) from [bepninex builds](https://builds.bepinex.dev/projects/bepinex_be) (under the artifacts section)
+  - File name should have `IL2CPP` in it and look similar to this: `BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.660+40bf261.zip`
 1. Locate your `Game Root` folder. To do this open Steam and navigate to Library -> Mars First Logistics Demo -> Right Click -> Properties -> Game Files -> Browse
 1. Follow these instructions to [install Bepinex Il2CPP](https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html):
   - Extract the contents of the download into the `Game Root` folder
