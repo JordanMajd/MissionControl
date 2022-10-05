@@ -35,6 +35,16 @@ public class CheatManager : MonoBehaviour
   }
 
 
+  public void EnableGravity()
+  {
+    GameObject vehicle = GameObject.Find("vehicle");
+    ArticulationBody[] bodies = vehicle.GetComponentsInChildren<ArticulationBody>();
+    foreach (var body in bodies)
+    {
+      body.useGravity = true;
+    }
+  }
+
   public void UnlockAllParts()
   {
     Conf.g.partsInventory.UnlockAllParts();
@@ -83,9 +93,15 @@ public class CheatUIManager : PanelBase
   protected override void ConstructPanelContent()
   {
     UIFactory.SetLayoutGroup<VerticalLayoutGroup>(ContentRoot, true, false, true, true);
-    ButtonRef gravButton = UIFactory.CreateButton(ContentRoot, "DisableGravityButton", "Disable Gravity");
-    UIFactory.SetLayoutElement(gravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    gravButton.OnClick += OnGravityButtonClick;
+
+    ButtonRef disableGravButton = UIFactory.CreateButton(ContentRoot, "DisableGravityButton", "Disable Gravity");
+    UIFactory.SetLayoutElement(disableGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
+    disableGravButton.OnClick += OnDisableGravityButtonClick;
+
+    ButtonRef enableGravButton = UIFactory.CreateButton(ContentRoot, "EnableGravityButton", "Enable Gravity");
+    UIFactory.SetLayoutElement(enableGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
+    enableGravButton.OnClick += OnEnableGravityButtonClick;
+
 
     ButtonRef unlockButton = UIFactory.CreateButton(ContentRoot, "UnlockPartsButton", "Unlock All Parts");
     UIFactory.SetLayoutElement(unlockButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
@@ -96,11 +112,20 @@ public class CheatUIManager : PanelBase
     givePartsButton.OnClick += OnGivePartsButtonClick;
   }
 
-  protected static void OnGravityButtonClick()
+  protected static void OnDisableGravityButtonClick()
   {
     if (cheatManager != null)
     {
       cheatManager.DisableGravity();
+    }
+  }
+
+
+  protected static void OnEnableGravityButtonClick()
+  {
+    if (cheatManager != null)
+    {
+      cheatManager.EnableGravity();
     }
   }
 
