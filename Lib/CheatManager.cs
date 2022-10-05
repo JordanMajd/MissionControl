@@ -71,7 +71,7 @@ public class CheatUIManager : PanelBase
   public override int MinHeight => 200;
 
   public override Vector2 DefaultAnchorMin => new(0.2f, 0.02f);
-  public override Vector2 DefaultAnchorMax => new(0.8f, 0.98f);
+  public override Vector2 DefaultAnchorMax => new(0.4f, 0.04f);
 
   public static void Init(CheatManager _cheatManager)
   {
@@ -89,19 +89,17 @@ public class CheatUIManager : PanelBase
 
     ButtonRef unlockButton = UIFactory.CreateButton(ContentRoot, "UnlockPartsButton", "Unlock All Parts");
     UIFactory.SetLayoutElement(unlockButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    gravButton.OnClick += OnUnlockAllPartsButton;
-
+    unlockButton.OnClick += OnUnlockAllPartsButton;
 
     ButtonRef givePartsButton = UIFactory.CreateButton(ContentRoot, "GivePartsButton", "Give 9999 of Each Part");
     UIFactory.SetLayoutElement(givePartsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    gravButton.OnClick += OnGivePartsButtonClick;
+    givePartsButton.OnClick += OnGivePartsButtonClick;
   }
 
   protected static void OnGravityButtonClick()
   {
     if (cheatManager != null)
     {
-      MissionControlPlugin.Log.LogInfo("OnGravityButtonClick");
       cheatManager.DisableGravity();
     }
   }
@@ -110,7 +108,6 @@ public class CheatUIManager : PanelBase
   {
     if (cheatManager != null)
     {
-      MissionControlPlugin.Log.LogInfo("OnGivePartsButtonClick");
       cheatManager.SetPartsTotal(9999);
     }
   }
@@ -119,7 +116,6 @@ public class CheatUIManager : PanelBase
   {
     if (cheatManager != null)
     {
-      MissionControlPlugin.Log.LogInfo("OnUnlockAllPartsButton");
       cheatManager.UnlockAllParts();
     }
   }
