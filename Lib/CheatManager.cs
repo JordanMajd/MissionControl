@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UniverseLib.UI;
-
 using UniverseLib.UI.Panels;
 using UniverseLib.UI.Models;
 using UniverseLib.Input;
@@ -9,9 +8,12 @@ namespace MissionControl;
 
 // To Add Cheats
 // - SetSaveFile
-// - Expand building grid
 public class CheatManager : MonoBehaviour
 {
+  public void Awake() {
+    gameObject.name = "CheatManager";
+    gameObject.hideFlags = HideFlags.HideAndDontSave;
+  }
   public void Start()
   {
     CheatUIManager.Init(this);

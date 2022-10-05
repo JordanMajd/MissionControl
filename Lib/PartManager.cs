@@ -3,7 +3,6 @@ using UnityEngine;
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System.Linq;
 using System.Collections.Generic;
-using System;
 using SimpleJSON;
 
 namespace MissionControl;
@@ -15,7 +14,6 @@ public class PartsManager : MonoBehaviour
   private List<PartSO> partsList = new List<PartSO>();
   private List<GameObject> partsPrefabs = new List<GameObject>();
   private List<PartSO.Action> actionsList = new List<PartSO.Action>();
-
   public void Awake()
   {
     gameObject.name = "PartsManager";
@@ -55,7 +53,9 @@ public class PartsManager : MonoBehaviour
     PartSO part = partType switch
     {
       "WheelSO" => CreateWheelSO(node, parent.Cast<WheelSO>()),
-      // "HornSO" => CreateHornSO(node, parentefab),
+      "ServoSO" => CreateServoSO(node, parent.Cast<ServoSO>()),
+      "PistonSO" => CreatePistonSO(node, parent.Cast<PistonSO>()),
+      // "HornSO" => CreateHornSO(node, parent),
       _ => CreatePartSO<PartSO>(node, parent),
     };
 
@@ -64,7 +64,7 @@ public class PartsManager : MonoBehaviour
     return part;
   }
 
-  private T CreatePartSO<T>(JSONNode node, PartSO parent) where T : PartSO
+  private T CreatePartSO<T>(JSONNode node, T parent) where T : PartSO
   {
     T newPart = ScriptableObject.CreateInstance<T>();
     // PartSO
@@ -86,11 +86,13 @@ public class PartsManager : MonoBehaviour
     prefab.hideFlags = HideFlags.HideAndDontSave;
     prefab.name = node["name"];
 
-    if(node["scale"] != null) {
+    if (node["scale"] != null)
+    {
       float scale = node["scale"].AsFloat;
       prefab.transform.localScale = new Vector3(scale, scale, scale);
     }
-    if(node["mesh"] != null && node["meshBundle"] != null) {
+    if (node["mesh"] != null && node["meshBundle"] != null)
+    {
       MeshFilter mf = prefab.GetComponentInChildren<MeshFilter>();
       if (mf != null)
       {
@@ -114,7 +116,8 @@ public class PartsManager : MonoBehaviour
   }
 
   // Doesn't work :C
-  private HornSO CreateHornSO(JSONNode node, PartSO parent) {
+  private HornSO CreateHornSO(JSONNode node, HornSO parent)
+  {
     HornSO newHorn = CreatePartSO<HornSO>(node, parent);
     List<PartSO.Action> lilActions = new List<PartSO.Action>();
 
@@ -124,11 +127,30 @@ public class PartsManager : MonoBehaviour
     action.locTerm = "Actions/Horn";
     lilActions.Add(action);
     newHorn.actions = lilActions.ToArray();
+    newHorn.SetActions();
 
     // don't let it fall out of reference
     actionsList.Add(action);
 
     return newHorn;
+  }
+
+
+  private PistonSO CreatePistonSO(JSONNode node, PistonSO parent)
+  {
+    PistonSO newPiston = CreatePartSO<PistonSO>(node, parent);
+    newPiston.pistonSpring = node["pistonSpring"].AsFloat;
+    newPiston.pistonDamper = node["pistonDamper"].AsFloat;
+    newPiston.pistonMaxExtent = node["pistonMaxExtent"].AsFloat;
+    return newPiston;
+  }
+
+  private ServoSO CreateServoSO(JSONNode node, ServoSO parent)
+  {
+    ServoSO newServo = CreatePartSO<ServoSO>(node, parent);
+    newServo.servoSpring = node["servoSpring"].AsFloat;
+    newServo.servoDamper = node["servoDamper"].AsFloat;
+    return newServo;
   }
 
   private WheelSO CreateWheelSO(JSONNode node, WheelSO parent)
