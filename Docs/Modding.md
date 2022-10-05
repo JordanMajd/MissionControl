@@ -34,8 +34,8 @@ If you are developing mods or want to learn how the internals of the game work a
 1. Install [UnityExplorer, IL2CPP CoreCLR version](https://github.com/sinai-dev/UnityExplorer)
   - You'll want to select **BepInEx BIE 6.X IL2CPP (CoreCLR)**
   - Unzip the release file into a folder
-  - Take the `plugins/sinai-dev-UnityExplorer` folder and place it in the games root `BepInEx/plugins/`
-  - So you'll have `game root path/BepinEx/plugins/sinai-dev-UnityExplorer`
+  - Take the whole `plugins/sinai-dev-UnityExplorer` folder and place it in the games root `BepInEx/plugins/`
+  - So the final folder structure should look like `<game root path>/BepinEx/plugins/sinai-dev-UnityExplorer`
 
 ## Further Resources
 
