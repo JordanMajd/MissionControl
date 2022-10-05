@@ -9,7 +9,7 @@ public class CheatManager : MonoBehaviour
   public void Start()
   {
     UnlockAllParts();
-    SetPartsTotal(888);
+    SetPartsTotal(9999);
   }
 
 
