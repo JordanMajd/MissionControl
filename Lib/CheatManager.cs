@@ -42,7 +42,6 @@ public class CheatManager : MonoBehaviour
 
   public void SetPartsTotal(int count)
   {
-    Conf.g.partsInventory.UnlockAllParts();
     foreach (var entry in Conf.g.partsInventory.unlockedParts)
     {
       entry.Value.total = count;
