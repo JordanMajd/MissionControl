@@ -102,6 +102,7 @@ public class CheatUIManager : PanelBase
   {
     if (cheatManager != null)
     {
+      MissionControlPlugin.Log.LogInfo("OnGravityButtonClick");
       cheatManager.DisableGravity();
     }
   }
@@ -110,6 +111,7 @@ public class CheatUIManager : PanelBase
   {
     if (cheatManager != null)
     {
+      MissionControlPlugin.Log.LogInfo("OnGivePartsButtonClick");
       cheatManager.SetPartsTotal(9999);
     }
   }
@@ -118,6 +120,7 @@ public class CheatUIManager : PanelBase
   {
     if (cheatManager != null)
     {
+      MissionControlPlugin.Log.LogInfo("OnUnlockAllPartsButton");
       cheatManager.UnlockAllParts();
     }
   }
