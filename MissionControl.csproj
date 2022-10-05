@@ -45,6 +45,9 @@
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
+    <Reference Include="UnityEngine.PhysicsModule">
+      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
       <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>

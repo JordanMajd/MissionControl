@@ -22,7 +22,10 @@ TODO, Real documenation
     - Localization is broken
     - Custom meshes don't have textures / materials
     - No custom part icons yet
-- Unlocks all parts and gives 999 of each for testing purposes (will remove later and move to cheat manager)
+- Cheat Manager:
+  - Disable Gravity
+  - Give 9999 parts (Enabled by default for testing atm)
+  - Unlock all parts (Enabled by default for testing atm)
 
 ### Future Work
 

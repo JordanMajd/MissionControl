@@ -26,7 +26,7 @@
       "wheelWidth": 4, 
       "wheelRadius": 4,
       "scale": 4,
-      "mesh": "tire_v3",
+      "mesh": "wheels",
       "meshBundle": "examplebundle"
     },
     {
@@ -38,11 +38,11 @@
       "titleLocTerm": "Parts/Brick",
       "titleTranslation": "Brick",
       "cost": 1,
-      "mass": 1,
+      "mass": 32,
       "includeInDemo": true,
       "order": 101,
       "ID": 101,
-      "scale": 3
+      "scale": 4
     }
   ]
 }

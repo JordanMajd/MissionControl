@@ -22,11 +22,11 @@ public class GamePatch: MonoBehaviour
     {
       try
       {
-        MissionControlPlugin.Log.LogInfo("Game initialized, all parts unlocked");
-        __instance.partsInventory.UnlockAllParts();
-        foreach (var entry in __instance.partsInventory.unlockedParts) {
-          entry.Value.total = 9999;
-        }
+        MissionControlPlugin.Log.LogInfo("Game initialized");
+        // __instance.partsInventory.UnlockAllParts();
+        // foreach (var entry in __instance.partsInventory.unlockedParts) {
+        //   entry.Value.total = 9999;
+        // }
       }
       catch (System.Exception ex)
       {

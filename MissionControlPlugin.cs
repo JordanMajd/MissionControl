@@ -36,9 +36,8 @@ public class MissionControlPlugin : BasePlugin
   }
   async void AddDelayedComponents()
   {
-    await Task.Delay(3000);
-    // MissionControlComponent sc = AddComponent<MissionControlComponent>();
-    // MissionControlPlugin.Log.LogInfo($"Plugin mounted");
+    await Task.Delay(5000);
+    CheatManager cm = AddComponent<CheatManager>();
   }
 }
 
