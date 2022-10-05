@@ -112,7 +112,7 @@ public class CheatUIManager : PanelBase
     UIFactory.SetLayoutElement(givePartsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
     givePartsButton.OnClick += OnGivePartsButtonClick;
 
-    ButtonRef giveFundsButton = UIFactory.CreateButton(ContentRoot, "GivePartsButton", "Give $999,999");
+    ButtonRef giveFundsButton = UIFactory.CreateButton(ContentRoot, "GiveFundsButton", "Give $999,999");
     UIFactory.SetLayoutElement(giveFundsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
     giveFundsButton.OnClick += OnGiveFundsButtonClick;
   }
