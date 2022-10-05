@@ -57,7 +57,7 @@
       "includeInDemo": true,
       "order": 102,
       "ID": 102,
-      "pistonSpring": 200000,
+      "pistonSpring": 900000,
       "pistonDamper": 0,
       "pistonMaxExtent": 99
     },
@@ -74,8 +74,8 @@
       "includeInDemo": true,
       "order": 103,
       "ID": 103,
-      "servoSpring": 0,
-      "servoDamper": 300000
+      "servoSpring": 900000,
+      "servoDamper": 0
     }
   ]
 }
