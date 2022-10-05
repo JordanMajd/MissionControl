@@ -34,7 +34,6 @@ Optional steps:
 
 ### Future Work
 
-- Cheat Manager
 - Contract Manager
 - Parcel Manger
 - Station Manager
