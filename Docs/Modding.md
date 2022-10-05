@@ -15,6 +15,7 @@ In order to install any mods, we must first install Bepinex:
   - Extract the contents of the download into the `Game Root` folder
   - From the `Game Root` folder, run the game once by clicking on `Mars First Logistics.exe` to generate the bepinex files
   - After the game runs you may close it
+1. From now on when you launch the game, launch it from "Steam" instead of clicking on the exe. 
 1. You are now ready to install any mods you want :)
 
 ## Installing Mods
@@ -36,6 +37,7 @@ If you are developing mods or want to learn how the internals of the game work a
   - Unzip the release file into a folder
   - Take the whole `plugins/sinai-dev-UnityExplorer` folder and place it in the games root `BepInEx/plugins/`
   - So the final folder structure should look like `<game root path>/BepinEx/plugins/sinai-dev-UnityExplorer`
+  - Open Mars First Logistics via Steam
 
 If This gives you trouble you can instead download [this precompiled version of UnityExplorer / UniverseLib](https://locoserver.net/dl/unityexplorer_bie6.zip). [More details in this github issue.](https://github.com/sinai-dev/UnityExplorer/issues/169#issuecomment-1251730571])
 
