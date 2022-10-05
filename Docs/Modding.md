@@ -2,7 +2,7 @@
 
 ⚠ Do at your own risk. It is recommended to back up the game before modifying ⚠
 
-## Setup Bepinex
+## Installing Bepinex
 
 In order to install any mods, we must first install Bepinex:
 
@@ -13,17 +13,17 @@ In order to install any mods, we must first install Bepinex:
   - Run the game once by clicking on the exe to generate the bepinex files. After the game runs you may close it
 1. You are now ready to install any mods you want
 
-### Mods
+## Installing Mods
 
 Here are instructions on how to install mods
 
-## Setup Mission Control
+### Setup Mission Control
 
 How to install this mod.
 
 TODO, in the meantime see [README.md](/README.md)
 
-## Setup Unity Explorer
+### Setup Unity Explorer
 
 If you are developing mods or want to learn how the internals of the game work and tweak them yourself I recomend installing Unity Explorer
 
@@ -34,8 +34,6 @@ If you are developing mods or want to learn how the internals of the game work a
   - Take the `plugins/sinai-dev-UnityExplorer` folder and place it in the games root `BepInEx/plugins/`
   - So you'll have `game root path/BepinEx/plugins/sinai-dev-UnityExplorer`
 
-
-
-## Resources
+## Further Resources
 
 - [Installing Bepinex](https://docs.bepinex.dev/master/articles/user_guide/installation/index.html)
