@@ -27,7 +27,7 @@ Optional steps:
     - Localization is broken
     - Custom meshes don't have textures / materials
     - No custom part icons yet
-- Cheat Manager: That can be opened by pressing `F8`
+- Cheat Manager: In game menu can be opened by pressing `F8`
   - Disable / Enable Vehicle Gravity
   - Give 9999 parts
   - Unlock all parts
