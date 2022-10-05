@@ -75,7 +75,11 @@ public class CheatManager : MonoBehaviour
 
 
   public void SetGridScale(float scale) {
+    // VehicleEditor.maxBuildExtent = scale;
     Conf.g.editor.grid.transform.localScale = new Vector3(scale, scale, scale);
+    if(scale != 0){
+      Conf.g.editor.editorCam.minScale = 1 / scale;
+    }
   }
 }
 
