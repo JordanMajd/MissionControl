@@ -7,6 +7,9 @@ using UniverseLib.UI.Models;
 using UniverseLib.Input;
 namespace MissionControl;
 
+// To Add Cheats
+// - SetSaveFile
+// - Expand building grid
 public class CheatManager : MonoBehaviour
 {
   public void Start()
@@ -46,7 +49,7 @@ public class CheatManager : MonoBehaviour
     Conf.g.partsInventory.UnlockAllParts();
   }
 
-  public void SetPartsTotal(int count)
+  public void GiveParts(int count)
   {
     foreach (var entry in Conf.g.partsInventory.unlockedParts)
     {
@@ -64,13 +67,16 @@ public class CheatManager : MonoBehaviour
   {
     GameObject confGO = GameObject.Find("Conf");
     Conf conf = confGO.GetComponent<Conf>();
-
     conf.maxGroundSpeed = maxSpeed;
     conf.maxAirSpeed = maxSpeed;
     Conf.g.player.vehicle.maxSpeed = maxSpeed;
     // Conf.g.player.vehicle.CapSpeed();
   }
 
+
+  public void SetGridScale(float scale) {
+    Conf.g.editor.grid.transform.localScale = new Vector3(scale, scale, scale);
+  }
 }
 
 public class CheatUIManager : PanelBase
@@ -130,6 +136,16 @@ public class CheatUIManager : PanelBase
     ButtonRef maxSpeedButton = UIFactory.CreateButton(ContentRoot, "MaxSpeedButton", "Set Max Speed 9999.9");
     UIFactory.SetLayoutElement(maxSpeedButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
     maxSpeedButton.OnClick += OnMaxSpeedButtonClick;
+
+    ButtonRef removeBuildLimitButton = UIFactory.CreateButton(ContentRoot, "RemoveBuildLimitButton", "Remove Build Limit");
+    UIFactory.SetLayoutElement(removeBuildLimitButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
+    removeBuildLimitButton.OnClick += OnRemoveBuildLimitClick;
+  }
+
+  protected static void OnRemoveBuildLimitClick() {
+    if(cheatManager != null) {
+      cheatManager.SetGridScale(999);
+    }
   }
 
   protected static void OnDisableGravityButtonClick()
@@ -152,7 +168,7 @@ public class CheatUIManager : PanelBase
   {
     if (cheatManager != null)
     {
-      cheatManager.SetPartsTotal(9999);
+      cheatManager.GiveParts(9999);
     }
   }
 

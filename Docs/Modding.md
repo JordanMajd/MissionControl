@@ -46,3 +46,4 @@ If This gives you trouble you can instead download [this precompiled version of 
 Some people have had success using [this guide](https://framedsc.com/GeneralGuides/universal_unity_freecam.htm) for installing universe lib
 
 - [Installing Bepinex](https://docs.bepinex.dev/master/articles/user_guide/installation/index.html)
+- Dynspy
