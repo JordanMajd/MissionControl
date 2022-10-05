@@ -20,12 +20,9 @@ Optional steps:
 
 ### Features
 
-- Asset Utils: Tools to load assets, textures, meshes
-- Part Manager: Tools to import custom parts with their own meshes
-  - Limitations:
-    - Can import `PartSO` and `WheelSO`, other types to follow
+- Part Manager: Import part packs and custom meshes
     - Localization is broken
-    - Custom meshes don't have textures / materials
+    - Custom meshes don't have materials
     - No custom part icons yet
 - Cheat Manager: In game menu can be opened by pressing `F8`
   - Disable / Enable Vehicle Gravity
@@ -34,6 +31,7 @@ Optional steps:
   - Unlock all parts
   - Set max speed 99999
   - Remove build limit
+- Asset Utils: Tools to load assets, textures, meshes
 
 ### Future Work
 

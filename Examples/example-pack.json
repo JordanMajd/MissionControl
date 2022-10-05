@@ -43,6 +43,39 @@
       "order": 101,
       "ID": 101,
       "scale": 4
+    },
+    {
+      "type": "PistonSO",
+      "parent": "08Piston",
+      "title": "Test Piston",
+      "description": "Test Piston",
+      "name": "102Piston",
+      "titleLocTerm": "Parts/Test Piston",
+      "titleTranslation": "Test Piston",
+      "cost": 1,
+      "mass": 5,
+      "includeInDemo": true,
+      "order": 102,
+      "ID": 102,
+      "pistonSpring": 200000,
+      "pistonDamper": 0,
+      "pistonMaxExtent": 99
+    },
+    {
+      "type": "ServoSO",
+      "parent": "07Servo",
+      "title": "Test Servo",
+      "description": "Test Servo",
+      "name": "103Servo",
+      "titleLocTerm": "Parts/Test Servo",
+      "titleTranslation": "Test Servo",
+      "cost": 1,
+      "mass": 5,
+      "includeInDemo": true,
+      "order": 103,
+      "ID": 103,
+      "servoSpring": 0,
+      "servoDamper": 300000
     }
   ]
 }
