@@ -27,10 +27,10 @@ Optional steps:
     - Localization is broken
     - Custom meshes don't have textures / materials
     - No custom part icons yet
-- Cheat Manager:
+- Cheat Manager: That can be opened by pressing `F8`
   - Disable Gravity
-  - Give 9999 parts (Enabled by default for testing atm)
-  - Unlock all parts (Enabled by default for testing atm)
+  - Give 9999 parts
+  - Unlock all parts
 
 ### Future Work
 
