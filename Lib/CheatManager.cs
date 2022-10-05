@@ -50,13 +50,25 @@ public class CheatManager : MonoBehaviour
   {
     foreach (var entry in Conf.g.partsInventory.unlockedParts)
     {
-      entry.Value.total = count;
+      // entry.Value.total = count;
+      Conf.g.partsInventory.AddPart(entry.Value.id, count, false);
     }
-  }
 
+  }
   public void GiveFunds(int amount)
   {
-    Conf.g.player.money = amount;
+    Conf.g.player.money += amount;
+  }
+
+  public void SetMaxSpeed(float maxSpeed)
+  {
+    GameObject confGO = GameObject.Find("Conf");
+    Conf conf = confGO.GetComponent<Conf>();
+
+    conf.maxGroundSpeed = maxSpeed;
+    conf.maxAirSpeed = maxSpeed;
+    Conf.g.player.vehicle.maxSpeed = maxSpeed;
+    // Conf.g.player.vehicle.CapSpeed();
   }
 
 }
@@ -79,7 +91,7 @@ public class CheatUIManager : PanelBase
   }
   public override string Name => "Mission Control: Cheat Manager";
   public override int MinWidth => 200;
-  public override int MinHeight => 200;
+  public override int MinHeight => 300;
 
   public override Vector2 DefaultAnchorMin => new(0.2f, 0.02f);
   public override Vector2 DefaultAnchorMax => new(0.4f, 0.04f);
@@ -103,10 +115,9 @@ public class CheatUIManager : PanelBase
     UIFactory.SetLayoutElement(enableGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
     enableGravButton.OnClick += OnEnableGravityButtonClick;
 
-
     ButtonRef unlockButton = UIFactory.CreateButton(ContentRoot, "UnlockPartsButton", "Unlock All Parts");
     UIFactory.SetLayoutElement(unlockButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    unlockButton.OnClick += OnUnlockAllPartsButton;
+    unlockButton.OnClick += OnUnlockAllPartsButtonClick;
 
     ButtonRef givePartsButton = UIFactory.CreateButton(ContentRoot, "GivePartsButton", "Give 9999 of Each Part");
     UIFactory.SetLayoutElement(givePartsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
@@ -115,6 +126,10 @@ public class CheatUIManager : PanelBase
     ButtonRef giveFundsButton = UIFactory.CreateButton(ContentRoot, "GiveFundsButton", "Give $999,999");
     UIFactory.SetLayoutElement(giveFundsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
     giveFundsButton.OnClick += OnGiveFundsButtonClick;
+
+    ButtonRef maxSpeedButton = UIFactory.CreateButton(ContentRoot, "MaxSpeedButton", "Set Max Speed 9999.9");
+    UIFactory.SetLayoutElement(maxSpeedButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
+    maxSpeedButton.OnClick += OnMaxSpeedButtonClick;
   }
 
   protected static void OnDisableGravityButtonClick()
@@ -149,11 +164,18 @@ public class CheatUIManager : PanelBase
     }
   }
 
-  protected static void OnUnlockAllPartsButton()
+  protected static void OnUnlockAllPartsButtonClick()
   {
     if (cheatManager != null)
     {
       cheatManager.UnlockAllParts();
+    }
+  }
+  protected static void OnMaxSpeedButtonClick()
+  {
+    if (cheatManager != null)
+    {
+      cheatManager.SetMaxSpeed(99999f);
     }
   }
 }

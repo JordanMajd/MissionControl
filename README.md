@@ -32,6 +32,7 @@ Optional steps:
   - Give 999,999 funds
   - Give 9999 parts
   - Unlock all parts
+  - Set max speed 99999
 
 ### Future Work
 
