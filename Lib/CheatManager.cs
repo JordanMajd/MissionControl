@@ -1,4 +1,3 @@
-
 using UnityEngine;
 using UnityEngine.UI;
 using UniverseLib.UI;
@@ -8,10 +7,8 @@ using UniverseLib.UI.Models;
 using UniverseLib.Input;
 namespace MissionControl;
 
-
 public class CheatManager : MonoBehaviour
 {
-
   public void Start()
   {
     CheatUIManager.Init(this);
@@ -23,7 +20,6 @@ public class CheatManager : MonoBehaviour
       CheatUIManager.ShowMenu();
   }
 
-
   public void DisableGravity()
   {
     GameObject vehicle = GameObject.Find("vehicle");
@@ -34,9 +30,9 @@ public class CheatManager : MonoBehaviour
     }
   }
 
-
   public void EnableGravity()
   {
+    // could access Conf.g.player.vehicle.
     GameObject vehicle = GameObject.Find("vehicle");
     ArticulationBody[] bodies = vehicle.GetComponentsInChildren<ArticulationBody>();
     foreach (var body in bodies)
@@ -56,6 +52,11 @@ public class CheatManager : MonoBehaviour
     {
       entry.Value.total = count;
     }
+  }
+
+  public void GiveFunds(int amount)
+  {
+    Conf.g.player.money = amount;
   }
 
 }
@@ -110,6 +111,10 @@ public class CheatUIManager : PanelBase
     ButtonRef givePartsButton = UIFactory.CreateButton(ContentRoot, "GivePartsButton", "Give 9999 of Each Part");
     UIFactory.SetLayoutElement(givePartsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
     givePartsButton.OnClick += OnGivePartsButtonClick;
+
+    ButtonRef giveFundsButton = UIFactory.CreateButton(ContentRoot, "GivePartsButton", "Give $999,999");
+    UIFactory.SetLayoutElement(giveFundsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
+    giveFundsButton.OnClick += OnGiveFundsButtonClick;
   }
 
   protected static void OnDisableGravityButtonClick()
@@ -119,7 +124,6 @@ public class CheatUIManager : PanelBase
       cheatManager.DisableGravity();
     }
   }
-
 
   protected static void OnEnableGravityButtonClick()
   {
@@ -134,6 +138,14 @@ public class CheatUIManager : PanelBase
     if (cheatManager != null)
     {
       cheatManager.SetPartsTotal(9999);
+    }
+  }
+
+  protected static void OnGiveFundsButtonClick()
+  {
+    if (cheatManager != null)
+    {
+      cheatManager.GiveFunds(999999);
     }
   }
 

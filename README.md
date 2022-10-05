@@ -29,6 +29,7 @@ Optional steps:
     - No custom part icons yet
 - Cheat Manager: In game menu can be opened by pressing `F8`
   - Disable / Enable Vehicle Gravity
+  - Give 999,999 funds
   - Give 9999 parts
   - Unlock all parts
 
