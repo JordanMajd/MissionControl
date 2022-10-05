@@ -31,8 +31,8 @@ TODO: How to install [Mission Control](https://github.com/JordanMajd/MissionCont
 
 If you are developing mods or want to learn how the internals of the game work and tweak them yourself I recomend installing Unity Explorer
 
-1. Install [UnityExplorer, IL2CPP version](https://github.com/sinai-dev/UnityExplorer)
-  - You'll want to select BepInEx BIE 6.X IL2CPP
+1. Install [UnityExplorer, IL2CPP CoreCLR version](https://github.com/sinai-dev/UnityExplorer)
+  - You'll want to select **BepInEx BIE 6.X IL2CPP (CoreCLR)**
   - Unzip the release file into a folder
   - Take the `plugins/sinai-dev-UnityExplorer` folder and place it in the games root `BepInEx/plugins/`
   - So you'll have `game root path/BepinEx/plugins/sinai-dev-UnityExplorer`

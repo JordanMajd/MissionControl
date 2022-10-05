@@ -15,7 +15,7 @@ See the section on [Modding](/Docs/Modding.md) for more information on setting u
 Optional steps:
 
 - Copy `Examples/examplebundle`, into your gamedata folder to test custom meshes and parts. This can be done manually or by running `./copy_examples.ps1`)
-- If you are developing your own mod I highly suggest install [UnityExplorer, IL2CPP version](https://github.com/sinai-dev/UnityExplorer)
+- If you are developing your own mod I highly suggest install [UnityExplorer, IL2CPP CoreCLR version](https://github.com/sinai-dev/UnityExplorer)
 - If your game path is different than mine you may want to update the paths in `build.ps1` and `copy_examples.ps1`
 
 ### Features
