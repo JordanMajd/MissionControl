@@ -12,7 +12,9 @@
       </PropertyGroup>
     </When>
   </Choose>
-
+  <PropertyGroup>
+    <DATA_PATH>$(GAME_PATH)\Mars First Logistics_Data</DATA_PATH>
+  </PropertyGroup>
   <PropertyGroup>
     <PLUGIN_PATH>$(GAME_PATH)\BepInEx\plugins\MissionControl</PLUGIN_PATH>
   </PropertyGroup>

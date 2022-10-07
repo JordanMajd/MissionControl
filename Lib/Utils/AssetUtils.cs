@@ -8,6 +8,7 @@ namespace MissionControl.Utils;
 
 static class Assets
 {
+  private static string ModResourcesPath = Path.Combine(BepInEx.Paths.GameDataPath, "ModResources");
 
   // UniverseLib.AssetBundle.GetAllLoadedAssetBundles was giving me some trouble loading too slowly
   // so we're just going to load things as quickly as possible using our own cache
@@ -18,7 +19,7 @@ static class Assets
     UniverseLib.AssetBundle assetBundle;
     if (!cachedBundles.TryGetValue(bundleName, out assetBundle))
     {
-      string path = Path.Combine(BepInEx.Paths.GameDataPath, bundleName);
+      string path = Path.Combine(ModResourcesPath, bundleName);
 
       if (!File.Exists(path))
       {
@@ -34,7 +35,7 @@ static class Assets
 
   public static JSONNode LoadJSON(string jsonName)
   {
-    string path = Path.Combine(BepInEx.Paths.GameDataPath, jsonName);
+    string path = Path.Combine(ModResourcesPath, jsonName);
 
     if (!File.Exists(path))
     {

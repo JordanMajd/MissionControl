@@ -11,6 +11,7 @@ See the section on [Modding](/Docs/Modding.md) for more information on setting u
 1. Install [BepinEx v6 IL2CPP](https://builds.bepinex.dev/projects/bepinex_be)
 1. Install [UniverseLib IL2CPP](https://github.com/sinai-dev/UniverseLib)
 1. You can build and copy the dll to your game by running `dotnet build /t:Deploy`
+1. You can copy example assets to your game by running `dotnet build /t:Examples`
 
 The project tries to find your game install, but if you need to configure it you can create `Env.props` file and provide it with a path to your game install:
 

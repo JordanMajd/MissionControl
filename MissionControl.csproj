@@ -68,4 +68,8 @@
   <Target Name="Deploy" DependsOnTargets="Build">
     <Copy SourceFiles="$(TargetDir)/MissionControl.dll" DestinationFolder="$(PLUGIN_PATH)" />
   </Target>
+  <Target Name="Examples">
+    <Copy SourceFiles="Examples/example-pack.json" DestinationFolder="$(DATA_PATH)/ModResources" />
+    <Copy SourceFiles="Examples/examplebundle" DestinationFolder="$(DATA_PATH)/ModResources" />
+  </Target>
 </Project>
