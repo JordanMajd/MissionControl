@@ -64,4 +64,8 @@
       <HintPath>$(GAME_PATH)\BepInEx\interop\Assembly-CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
+
+  <Target Name="Deploy" DependsOnTargets="Build">
+    <Copy SourceFiles="$(TargetDir)/MissionControl.dll" DestinationFolder="$(PLUGIN_PATH)" />
+  </Target>
 </Project>

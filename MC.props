@@ -1,15 +1,19 @@
 <Project>
   <!-- Load user environment variables -->
   <Import Project="Env.props" Condition="Exists('Env.props')" />
-    <!-- if user hasn't defined their own path let's set some defaults -->
-    <!-- TODO support mac and linux default steam dirs -->
-    <Choose>
+  <!-- if user hasn't defined their own path let's set some defaults -->
+  <!-- TODO support mac and linux default steam dirs -->
+  <Choose>
     <When Condition="$(GAME_PATH) == ''">
       <PropertyGroup>
-      <GAME_PATH>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
-      <!-- if previous path doesn't exist, try this one -->
-      <GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
+        <GAME_PATH>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
+        <!-- if previous path doesn't exist, try this one -->
+        <GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
       </PropertyGroup>
     </When>
-    </Choose>
+  </Choose>
+
+  <PropertyGroup>
+    <PLUGIN_PATH>$(GAME_PATH)\BepInEx\plugins\MissionControl</PLUGIN_PATH>
+  </PropertyGroup>
 </Project>
