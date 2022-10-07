@@ -8,13 +8,15 @@ These instructions are for Windows, however this works for all platforms, you'll
 
 In order to install any mods, we must first install Bepinex:
 
-1. Download the latest BepInEx Unity (**IL2CPP version not mono**) for Windows (x64) from [bepninex builds](https://builds.bepinex.dev/projects/bepinex_be) (under the artifacts section)
-  - File name should have `IL2CPP` in it and look similar to this: `BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.660+40bf261.zip`
-1. Locate your `Game Root` folder. To do this open Steam and navigate to Library -> Mars First Logistics Demo -> Right Click -> Properties -> Game Files -> Browse
+1. Download the[latest BepInEx Edge release](https://builds.bepinex.dev/projects/bepinex_be) (**IL2CPP version, not mono**) for Windows (x64):
+    - File name should have `IL2CPP` in it and look similar to this: `BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.660+XXXXXXX.zip`, where the `X` represent alphanumeric characters
+    - Do not use the [latest GitHub release](https://github.com/BepInEx/BepInEx/releases) as it will not work
+1. Locate the folder where you have installed the game, which will be referred to as `%GameRoot%`. 
+    - You can do this by opening Steam and navigating to Library → Mars First Logistics Demo → Right Click → Properties → Game Files → Browse
 1. Follow these instructions to [install Bepinex Il2CPP](https://docs.bepinex.dev/master/articles/user_guide/installation/unity_il2cpp.html):
-  - Extract the contents of the download into the `Game Root` folder
-  - From the `Game Root` folder, run the game once by clicking on `Mars First Logistics.exe` to generate the bepinex files
-  - After the game runs you may close it
+    - Extract the contents of the download into the `%GameRoot%` folder
+    - From the `%GameRoot%` folder, run the game once by clicking on `Mars First Logistics.exe` to generate the bepinex files
+    - After the game runs you may close it
 1. From now on when you launch the game, launch it from "Steam" instead of clicking on the exe. 
 1. You are now ready to install any mods you want :)
 
