@@ -40,8 +40,9 @@
     <Reference Include="UnityEngine.CoreModule">
       <HintPath>$(GAME_PATH)\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-  <Reference Include="UniverseLib">
-      <HintPath>$(GAME_PATH)\BepInEx\plugins\sinai-dev-UnityExplorer\UniverseLib.IL2CPP.Interop.dll</HintPath>
+    <Reference Include="UniverseLib">
+      <HintPath Condition="Exists('$(GAME_PATH)\BepInEx\plugins\UniverseLib.IL2CPP.Interop.dll')">$(GAME_PATH)\BepInEx\plugins\UniverseLib.IL2CPP.Interop.dll</HintPath>
+      <HintPath Condition="Exists('$(GAME_PATH)\BepInEx\plugins\sinai-dev-UnityExplorer\UniverseLib.IL2CPP.Interop.dll')">$(GAME_PATH)\BepInEx\plugins\sinai-dev-UnityExplorer\UniverseLib.IL2CPP.Interop.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
       <HintPath>$(GAME_PATH)\BepInEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
