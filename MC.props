@@ -4,7 +4,10 @@
   <PropertyGroup>
     <!-- if user hasn't defined their own path let's set some defaults -->
     <!-- we'll want to support mac and linux default steam dirs -->
-    <GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
-    <GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
+    <When Condition="$(GAME_PATH) == ''">
+      <GAME_PATH>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
+      <!-- if previous path doesn't exist, try this one -->
+      <GAME_PATH Condition="!Exists('$(GAME_PATH)')">C:\Program Files\Steam\steamapps\common\Mars First Logistics Demo</GAME_PATH>
+    </When>
   </PropertyGroup>
 </Project>
