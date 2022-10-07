@@ -2,3 +2,4 @@ bin
 obj
 Resources
 notes.md
+*.dll

@@ -31,36 +31,36 @@
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Il2Cppmscorlib">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\Il2Cppmscorlib.dll</HintPath>
+      <HintPath>.\External\Il2Cppmscorlib.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.dll</HintPath>
+      <HintPath>.\External\UnityEngine.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.CoreModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.CoreModule.dll</HintPath>
+      <HintPath>.\External\UnityEngine.CoreModule.dll</HintPath>
     </Reference>
-  <Reference Include="UniverseLib">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\plugins\sinai-dev-UnityExplorer\UniverseLib.IL2CPP.Interop.dll</HintPath>
+    <Reference Include="UniverseLib">
+      <HintPath>.\External\UniverseLib.IL2CPP.Interop.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.AssetBundleModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.AssetBundleModule.dll</HintPath>
+      <HintPath>.\External\UnityEngine.AssetBundleModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.PhysicsModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.PhysicsModule.dll</HintPath>
+      <HintPath>.\External\UnityEngine.PhysicsModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.JSONSerializeModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.JSONSerializeModule.dll</HintPath>
+      <HintPath>.\External\UnityEngine.JSONSerializeModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.TextRenderingModule">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.TextRenderingModule.dll</HintPath>
+      <HintPath>.\External\UnityEngine.TextRenderingModule.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.UI">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\UnityEngine.UI.dll</HintPath>
+      <HintPath>.\External\UnityEngine.UI.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="AssemblyCSharp">
-      <HintPath>C:\Program Files (x86)\Steam\steamapps\common\Mars First Logistics Demo\BepInEx\interop\Assembly-CSharp.dll</HintPath>
+      <HintPath>.\External\Assembly-CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
 </Project>
