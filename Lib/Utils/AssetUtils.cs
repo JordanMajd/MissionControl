@@ -54,7 +54,6 @@ static class Assets
     List<string> assetPacks = new List<string>();
     if (Directory.Exists(ModResourcesPath))
     {
-       MissionControlPlugin.Log.LogInfo($"inside {ModResourcesPath}");
       string[] filesNames = Directory.GetFiles(ModResourcesPath);
       foreach (string fileName in filesNames)
       {
