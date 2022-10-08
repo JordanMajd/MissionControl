@@ -4,6 +4,27 @@ Mission Control is set of modding tools and utilities for [Mars: First Logistics
 
 ⚠ This softwave is experimental ALPHA, we are working towards a stable API but we are nowhere near. But right now we are just thorwing things at walls and seeing what sticks. Structure will come with time. Expect breaking changes.
 
+## Features
+
+Current / In Progress:
+- Part Manager: Import part packs and custom meshes
+    - Custom meshes don't have materials
+    - No custom part icons yet
+- Cheat Manager: In game menu can be opened by pressing `F8`
+  - Disable / Enable Vehicle Gravity
+  - Give 999,999 funds
+  - Give 9999 parts
+  - Unlock all parts
+  - Set max speed 99999
+  - Remove build limit
+- Asset Utils: Tools to load assets, textures, meshes
+- Localization Manager: load & manage localization strings for custom parts]
+
+Future:
+- Contract Manager
+- Parcel Manger
+- Station Manager
+
 ## Getting Started
 
 See the section on [Modding](/Docs/Modding.md) for more information on setting up BepinEX.
@@ -23,27 +44,6 @@ The project tries to find your game install, but if you need to configure it you
 </Project>
 ```
 
-## Features
-
-- Part Manager: Import part packs and custom meshes
-    - Localization is broken
-    - Custom meshes don't have materials
-    - No custom part icons yet
-- Cheat Manager: In game menu can be opened by pressing `F8`
-  - Disable / Enable Vehicle Gravity
-  - Give 999,999 funds
-  - Give 9999 parts
-  - Unlock all parts
-  - Set max speed 99999
-  - Remove build limit
-- Asset Utils: Tools to load assets, textures, meshes
-
-## Future Work
-
-- Contract Manager
-- Parcel Manger
-- Station Manager
-
 ## Contributing
 
 TODO
@@ -54,4 +54,4 @@ TODO
 
 ## License 
 
-- MIT, see [LICENSE](/LICENSE) for more information.
+- MIT, see [LICENSE](/LICENSE) for more information
