@@ -10,7 +10,8 @@ namespace MissionControl;
 // - SetSaveFile
 public class CheatManager : MonoBehaviour
 {
-  public void Awake() {
+  public void Awake()
+  {
     gameObject.name = "CheatManager";
     gameObject.hideFlags = HideFlags.HideAndDontSave;
   }
@@ -76,10 +77,12 @@ public class CheatManager : MonoBehaviour
   }
 
 
-  public void SetGridScale(float scale) {
+  public void SetGridScale(float scale)
+  {
     // VehicleEditor.maxBuildExtent = scale;
     Conf.g.editor.grid.transform.localScale = new Vector3(scale, scale, scale);
-    if(scale != 0){
+    if (scale != 0)
+    {
       Conf.g.editor.editorCam.minScale = 1 / scale;
     }
   }
@@ -148,8 +151,10 @@ public class CheatUIManager : PanelBase
     removeBuildLimitButton.OnClick += OnRemoveBuildLimitClick;
   }
 
-  protected static void OnRemoveBuildLimitClick() {
-    if(cheatManager != null) {
+  protected static void OnRemoveBuildLimitClick()
+  {
+    if (cheatManager != null)
+    {
       cheatManager.SetGridScale(999);
     }
   }

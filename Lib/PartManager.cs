@@ -26,20 +26,24 @@ public class PartsManager : MonoBehaviour
       conf = gameConf.GetComponent<Conf>();
     }
 
-    if(MissionControlPlugin.MCConf.autoLoadAssetPacks.Value) {
+    if (MissionControlPlugin.MCConf.autoLoadAssetPacks.Value)
+    {
       List<PartSO> newParts = LoadAllPartsFiles();
       AddParts(newParts);
-    }    
+    }
   }
 
-  public List<PartSO> LoadAllPartsFiles() {
+  public List<PartSO> LoadAllPartsFiles()
+  {
     List<PartSO> allLoadedParts = new List<PartSO>();
     List<string> assetFileNames = Utils.Assets.GetFilesByExtension("json");
 
-    foreach(string fileName in assetFileNames) {
+    foreach (string fileName in assetFileNames)
+    {
       List<PartSO> curParts = LoadPartsFile(fileName);
       // il2cpp addRange :(
-      foreach(var part in curParts) {
+      foreach (var part in curParts)
+      {
         allLoadedParts.Add(part);
       }
     }
@@ -50,7 +54,8 @@ public class PartsManager : MonoBehaviour
   {
     List<PartSO> loadedParts = new List<PartSO>();
     JSONNode partsPack = Utils.Assets.LoadJSON(partsPath);
-    if(partsPack != null) {
+    if (partsPack != null)
+    {
       foreach (var part in partsPack["parts"])
       {
         loadedParts.Add(ParsePart(part));

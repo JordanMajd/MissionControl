@@ -5,7 +5,7 @@ namespace MissionControl.Patches;
 
 // Patch Game Instance
 // This is only here to serve as example
-public class GamePatch: MonoBehaviour
+public class GamePatch : MonoBehaviour
 {
   public void Awake()
   {

@@ -33,7 +33,7 @@ public class MissionControlPlugin : BasePlugin
     MCConf = new MCConf(Config);
 
     GamePatch gp = AddComponent<GamePatch>();
-    
+
     PartsManager pm = AddComponent<PartsManager>();
 
     // late mount components
@@ -47,10 +47,12 @@ public class MissionControlPlugin : BasePlugin
   }
 }
 
-class MCConf {
+class MCConf
+{
 
   public ConfigEntry<bool> autoLoadAssetPacks;
-  public MCConf(ConfigFile Config) {
+  public MCConf(ConfigFile Config)
+  {
     // Part Manager
     string partManager = "PartManager";
     autoLoadAssetPacks = Config.Bind(partManager, "AutoLoadAssetPacks", true, "Automatically load asset packs in ModResources");

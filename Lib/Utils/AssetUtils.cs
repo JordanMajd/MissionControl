@@ -70,7 +70,7 @@ static class Assets
     return assetPacks;
   }
 
-    public static List<string> GetFilesByExtension(string extension)
+  public static List<string> GetFilesByExtension(string extension)
   {
     List<string> fileList = new List<string>();
     if (Directory.Exists(ModResourcesPath))
