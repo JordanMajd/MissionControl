@@ -2,11 +2,12 @@
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
+using BepInEx.Configuration;
 
 using HarmonyLib;
 
 using System.Threading.Tasks;
-
+using UnityEngine;
 namespace MissionControl;
 using MissionControl.Patches;
 
@@ -17,6 +18,7 @@ public class MissionControlPlugin : BasePlugin
 
   internal static new ManualLogSource Log;
   internal static Harmony Harmony;
+  internal static MCConf MCConf;
 
   public override void Load()
   {
@@ -26,8 +28,11 @@ public class MissionControlPlugin : BasePlugin
 
     // set up harmony patcher
     Harmony = new Harmony("com.missioncontrol.patch");
-  
     MissionControlPlugin.Log.LogInfo("All patches applied");
+
+    // set up config 
+    MCConf = new MCConf(Config);
+
     GamePatch gp = AddComponent<GamePatch>();
     PartsManager pm = AddComponent<PartsManager>();
 
@@ -41,5 +46,13 @@ public class MissionControlPlugin : BasePlugin
   }
 }
 
+class MCConf {
 
+  public ConfigEntry<bool> autoLoadAssetPacks;
+  public MCConf(ConfigFile Config) {
+    // Part Manager
+    string partManager = "PartManager";
+    autoLoadAssetPacks = Config.Bind(partManager, "AutoLoadAssetPacks", true, "Automatically load asset packs in ModResources");
+  }
+}
 

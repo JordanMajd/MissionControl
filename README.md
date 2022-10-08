@@ -23,7 +23,7 @@ The project tries to find your game install, but if you need to configure it you
 </Project>
 ```
 
-### Features
+## Features
 
 - Part Manager: Import part packs and custom meshes
     - Localization is broken
@@ -38,7 +38,7 @@ The project tries to find your game install, but if you need to configure it you
   - Remove build limit
 - Asset Utils: Tools to load assets, textures, meshes
 
-### Future Work
+## Future Work
 
 - Contract Manager
 - Parcel Manger

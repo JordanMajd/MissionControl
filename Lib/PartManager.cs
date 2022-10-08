@@ -26,25 +26,38 @@ public class PartsManager : MonoBehaviour
     {
       conf = gameConf.GetComponent<Conf>();
     }
-    // TODO only do if config is set to load example asset pack
-    var newParts = this.LoadPartsFile("example-pack.json");
-    AddParts(newParts);
+
+    if(MissionControlPlugin.MCConf.autoLoadAssetPacks.Value) {
+      MissionControlPlugin.Log.LogInfo($"HERE");
+      List<PartSO> newParts = LoadPartsFiles();
+      AddParts(newParts);
+    }    
+  }
+
+  public List<PartSO> LoadPartsFiles() {
+    List<PartSO> loadedParts = new List<PartSO>();
+    List<string> assetFileNames = Utils.Assets.GetJSONFiles();
+    foreach(string fileName in assetFileNames) {
+      loadedParts.AddRange(LoadPartsFile(fileName));
+    }
+    return loadedParts;
   }
 
   public List<PartSO> LoadPartsFile(string partsPath)
   {
     List<PartSO> loadedParts = new List<PartSO>();
     JSONNode partsPack = Utils.Assets.LoadJSON(partsPath);
-    foreach (var part in partsPack["parts"])
-    {
-      loadedParts.Add(ParsePart(part));
+    if(partsPack != null) {
+      foreach (var part in partsPack["parts"])
+      {
+        loadedParts.Add(ParsePart(part));
+      }
     }
     return loadedParts;
   }
 
   public PartSO ParsePart(JSONNode node)
   {
-
     // Get Parent Object
     string parentName = node["parent"];
     PartSO parent = conf.partList.parts.Where(part => part.name == parentName).First();

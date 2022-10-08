@@ -47,4 +47,24 @@ static class Assets
 
     return JSON.Parse(jsonText);
   }
+
+
+  public static List<string> GetJSONFiles()
+  {
+    List<string> assetPacks = new List<string>();
+    if (Directory.Exists(ModResourcesPath))
+    {
+       MissionControlPlugin.Log.LogInfo($"inside {ModResourcesPath}");
+      string[] filesNames = Directory.GetFiles(ModResourcesPath);
+      foreach (string fileName in filesNames)
+      {
+        if (fileName.EndsWith(".json"))
+        {
+          assetPacks.Add(fileName);
+        }
+      }
+    }
+
+    return assetPacks;
+  }
 }
