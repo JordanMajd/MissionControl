@@ -28,7 +28,6 @@ public class PartsManager : MonoBehaviour
     }
 
     if(MissionControlPlugin.MCConf.autoLoadAssetPacks.Value) {
-      MissionControlPlugin.Log.LogInfo($"HERE");
       List<PartSO> newParts = LoadPartsFiles();
       AddParts(newParts);
     }    
