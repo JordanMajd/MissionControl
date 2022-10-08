@@ -1,38 +1,40 @@
 using UnityEngine;
 
 using I2.Loc;
-using System.Linq;
+using Il2CppSystem.Collections.Generic;
+
 namespace MissionControl;
-using System;
 public class LocalizationManager : MonoBehaviour
 {
 
   public LanguageSourceData LSData;
-  public void Awake() {
+  public void Awake()
+  {
     gameObject.name = "LocalizationManager";
     gameObject.hideFlags = HideFlags.HideAndDontSave;
   }
   public void Start()
   {
     GameObject resManGO = GameObject.Find("I2ResourceManager");
-    if(resManGO != null){
+    if (resManGO != null)
+    {
       ResourceManager res = resManGO.GetComponent<ResourceManager>();
       LanguageSourceAsset sourceAsset = res.mResourcesCache["I2Languages"].Cast<LanguageSourceAsset>();
       LSData = sourceAsset.SourceData;
-      ImportLocalization("Parts");
+      if (MissionControlPlugin.MCConf.autoLoadAssetPacks.Value)
+      {
+        ImportLocalization("Parts");
+      }
     }
   }
 
-  // TODO real line endings
-  public void ImportLocalization(string category) {
-    string newlocCSV = Utils.Assets.LoadCSV();
-
-    MissionControlPlugin.Log.LogInfo(newlocCSV);
-    // remove header from new locCSV
-    // var split = newlocCSV.Split(Environment.NewLine).Skip(1).ToArray();
-    // var csvFirstLIneRemoved = string.Join(Environment.NewLine, split);
-    // string oldLocCSV = LSData.Export_CSV(category);
-    LSData.Import_CSV(category, newlocCSV, eSpreadsheetUpdateMode.AddNewTerms);
-
+  public void ImportLocalization(string category)
+  {
+    List<string> fileNames = Utils.Assets.GetFilesByExtension("csv");
+    foreach (var fileName in fileNames)
+    {
+      string csvText = Utils.Assets.LoadCSV(fileName);
+      if (csvText != null) LSData.Import_CSV(category, csvText, eSpreadsheetUpdateMode.AddNewTerms);
+    }
   }
 }

@@ -13,6 +13,7 @@ static class Assets
   // so we're just going to load things as quickly as possible using our own cache
   // TODO make sure we clean up these asset bundles so we aren't taking up an insane amount of memory
   public static Dictionary<string, UniverseLib.AssetBundle> cachedBundles = new Dictionary<string, UniverseLib.AssetBundle>();
+
   public static T LoadAsset<T>(string bundleName, string assetName) where T : UnityEngine.Object
   {
     UniverseLib.AssetBundle assetBundle;
@@ -69,10 +70,27 @@ static class Assets
     return assetPacks;
   }
 
-
-  public static string LoadCSV()
+    public static List<string> GetFilesByExtension(string extension)
   {
-    string filePath = Path.Combine(ModResourcesPath, "example.csv");
+    List<string> fileList = new List<string>();
+    if (Directory.Exists(ModResourcesPath))
+    {
+      string[] filesNames = Directory.GetFiles(ModResourcesPath);
+      foreach (string fileName in filesNames)
+      {
+        if (fileName.EndsWith($".{extension}"))
+        {
+          fileList.Add(fileName);
+        }
+      }
+    }
+
+    return fileList;
+  }
+
+  public static string LoadCSV(string csvPath)
+  {
+    string filePath = Path.Combine(ModResourcesPath, csvPath);
     if (!File.Exists(filePath)) return null;
     return File.ReadAllText(filePath);
   }

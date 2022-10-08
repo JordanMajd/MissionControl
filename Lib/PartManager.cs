@@ -34,7 +34,7 @@ public class PartsManager : MonoBehaviour
 
   public List<PartSO> LoadAllPartsFiles() {
     List<PartSO> allLoadedParts = new List<PartSO>();
-    List<string> assetFileNames = Utils.Assets.GetJSONFiles();
+    List<string> assetFileNames = Utils.Assets.GetFilesByExtension("json");
 
     foreach(string fileName in assetFileNames) {
       List<PartSO> curParts = LoadPartsFile(fileName);
