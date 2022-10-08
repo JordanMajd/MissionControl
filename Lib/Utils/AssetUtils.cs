@@ -1,5 +1,4 @@
-
-using System.Collections.Generic;
+using Il2CppSystem.Collections.Generic;
 using System.IO;
 using SimpleJSON;
 
@@ -17,10 +16,13 @@ static class Assets
   public static T LoadAsset<T>(string bundleName, string assetName) where T : UnityEngine.Object
   {
     UniverseLib.AssetBundle assetBundle;
-    if (!cachedBundles.TryGetValue(bundleName, out assetBundle))
+    if (cachedBundles.ContainsKey(bundleName))
+    {
+      assetBundle = cachedBundles[bundleName];
+    }
+    else
     {
       string path = Path.Combine(ModResourcesPath, bundleName);
-
       if (!File.Exists(path))
       {
         MissionControlPlugin.Log.LogError($"LoadAsset, file {path} does not exists");
@@ -65,5 +67,13 @@ static class Assets
     }
 
     return assetPacks;
+  }
+
+
+  public static string LoadCSV()
+  {
+    string filePath = Path.Combine(ModResourcesPath, "example.csv");
+    if (!File.Exists(filePath)) return null;
+    return File.ReadAllText(filePath);
   }
 }

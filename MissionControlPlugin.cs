@@ -7,7 +7,6 @@ using BepInEx.Configuration;
 using HarmonyLib;
 
 using System.Threading.Tasks;
-using UnityEngine;
 namespace MissionControl;
 using MissionControl.Patches;
 
@@ -34,6 +33,7 @@ public class MissionControlPlugin : BasePlugin
     MCConf = new MCConf(Config);
 
     GamePatch gp = AddComponent<GamePatch>();
+    
     PartsManager pm = AddComponent<PartsManager>();
 
     // late mount components
@@ -42,6 +42,7 @@ public class MissionControlPlugin : BasePlugin
   async void AddDelayedComponents()
   {
     await Task.Delay(5000);
+    LocalizationManager lm = AddComponent<LocalizationManager>();
     CheatManager cm = AddComponent<CheatManager>();
   }
 }

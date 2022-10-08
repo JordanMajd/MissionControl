@@ -2,11 +2,10 @@ using UnityEngine;
 
 using Il2CppInterop.Runtime.InteropTypes.Arrays;
 using System.Linq;
-using System.Collections.Generic;
+using Il2CppSystem.Collections.Generic;
 using SimpleJSON;
 
 namespace MissionControl;
-
 
 public class PartsManager : MonoBehaviour
 {
@@ -28,18 +27,23 @@ public class PartsManager : MonoBehaviour
     }
 
     if(MissionControlPlugin.MCConf.autoLoadAssetPacks.Value) {
-      List<PartSO> newParts = LoadPartsFiles();
+      List<PartSO> newParts = LoadAllPartsFiles();
       AddParts(newParts);
     }    
   }
 
-  public List<PartSO> LoadPartsFiles() {
-    List<PartSO> loadedParts = new List<PartSO>();
+  public List<PartSO> LoadAllPartsFiles() {
+    List<PartSO> allLoadedParts = new List<PartSO>();
     List<string> assetFileNames = Utils.Assets.GetJSONFiles();
+
     foreach(string fileName in assetFileNames) {
-      loadedParts.AddRange(LoadPartsFile(fileName));
+      List<PartSO> curParts = LoadPartsFile(fileName);
+      // il2cpp addRange :(
+      foreach(var part in curParts) {
+        allLoadedParts.Add(part);
+      }
     }
-    return loadedParts;
+    return allLoadedParts;
   }
 
   public List<PartSO> LoadPartsFile(string partsPath)
@@ -138,7 +142,7 @@ public class PartsManager : MonoBehaviour
     action.actionName = "Honk";
     action.locTerm = "Actions/Horn";
     lilActions.Add(action);
-    newHorn.actions = lilActions.ToArray();
+    newHorn.actions = lilActions.ToArray().ToArray();
     newHorn.SetActions();
 
     // don't let it fall out of reference
@@ -195,7 +199,6 @@ public class PartsManager : MonoBehaviour
     // register new parts with game config
     foreach (var part in newParts)
     {
-      part.GetTranslations();
       part.AddToGlobalDict();
     }
 
