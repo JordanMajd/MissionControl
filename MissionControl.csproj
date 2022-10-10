@@ -1,10 +1,14 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
+    <VersionPrefix>0.0.1</VersionPrefix>
+    <VersionSuffix>alpha</VersionSuffix>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <AssemblyName>MissionControl</AssemblyName>
+    <AssemblyName>MissionControl-$(VersionPrefix)-$(VersionSuffix)</AssemblyName>
     <Description>Mission Control is set of modding tools and utilities for Mars: First Logistics Demo</Description>
-    <Version>0.0.1</Version>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <LangVersion>latest</LangVersion>
     <RestoreAdditionalProjectSources>
@@ -67,7 +71,10 @@
   </ItemGroup>
 
   <Target Name="Deploy" DependsOnTargets="Build">
-    <Copy SourceFiles="$(TargetDir)/MissionControl.dll" DestinationFolder="$(PLUGIN_PATH)" />
+    <Copy SourceFiles="$(TargetDir)/$(AssemblyName).dll" DestinationFolder="$(PLUGIN_PATH)" />
+  </Target>
+  <Target Name="Deploy" DependsOnTargets="Build">
+    <Copy SourceFiles="$(TargetDir)/$(AssemblyName).dll" DestinationFolder="$(PLUGIN_PATH)" />
   </Target>
   <Target Name="Examples">
     <Copy SourceFiles="Examples/example-pack.json" DestinationFolder="$(DATA_PATH)/ModResources" />

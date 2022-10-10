@@ -1,6 +1,6 @@
 # Mission Control 🚀
 
-Mission Control is set of modding tools and utilities for [Mars First Logistics Demo](https://store.steampowered.com/app/1532200/Mars_First_Logistics/), built for the community and by the community.
+Mission Control is set of modding tools and utilities for [Mars First Logistics Demo](https://store.steampowered.com/app/1532200/Mars_First_Logistics/), built for the community and by the community. It can be used as a mod by itself or it can be used as a library to help create mods.
 
 ⚠ This softwave is experimental ALPHA, we are working towards a stable API but we are nowhere near. But right now we are just thorwing things at walls and seeing what sticks. Structure will come with time. Expect breaking changes.
 

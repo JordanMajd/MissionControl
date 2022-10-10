@@ -10,7 +10,7 @@ namespace MissionControl;
 // - SetSaveFile
 public class CheatManager : MonoBehaviour
 {
-  private bool currentGravity = true;
+  // private bool currentGravity = true;
 
   public void Awake()
   {
@@ -35,9 +35,8 @@ public class CheatManager : MonoBehaviour
     ArticulationBody[] bodies = vehicle.GetComponentsInChildren<ArticulationBody>();
     foreach (var body in bodies)
     {
-      body.useGravity = !currentGravity;
+      body.useGravity = !body.useGravity;
     }
-    currentGravity = !currentGravity;
   }
 
   public void UnlockAllParts()

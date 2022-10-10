@@ -1,0 +1,17 @@
+name: build
+run-name: ${{ github.actor }} is learning GitHub Actions
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+      - run: dotnet build /p:Configuration=Release
+      - uses: actions/upload-artifact@v3
+        with:
+          name: latest-build
+          path: bin/Release/net6.0/MissionControl-*.dll
+          retention-days: 1
