@@ -54,11 +54,14 @@ After the required installation is completed:
 
 ## Contributing
 
-TODO
+We welcome your contributions!
 
-## Changelog
+Have a suggestion or want to report a bug?
+1. Search [issues](https://github.com/JordanMajd/MissionControl/issues) to see if the suggestion or bug has already been reports
+1. If it hasn't, open up a [new issue](https://github.com/JordanMajd/MissionControl/issues/new) and provide as detailed of an explanation as you can
 
-TODO
+Want to help write some code but not sure where to start? 
+- Take a look at our [open issues](https://github.com/JordanMajd/MissionControl/issues) and look for ones that have been triaged and tagged
 
 ## License 
 
