@@ -37,9 +37,15 @@ Mods are, as the name suggests, modifications to the game. Here is how to instal
 
 ### Setup Mission Control
 
-TODO: How to install [Mission Control](https://github.com/JordanMajd/MissionControl)
-- TODO publish release
-- If you are comfortable running and compiling code, see [README.md](/README.md) for instructions building the mod yourself
+How to install [Mission Control](https://github.com/JordanMajd/MissionControl)
+
+Please ensure you have completed the prerequesite steps:
+1. [Installing BepInEx](#installing-bepinex)
+2. [Adding UniverseLib](#adding-universelib)
+
+Once the prerequisites have been completed you are ready to install Mission Contorl:
+1. Download the latest .dll (example: `MissionControl-0.0.1-alpha.dll`) from [Releases](https://github.com/JordanMajd/MissionControl/releases)
+1. Copy it to `<GameRoot>/BepinEx/plugins/MissionControl/`
 
 ### Setup UnityExplorer
 
@@ -55,5 +61,6 @@ UnityExplorer is a tool that allows players to explore and modify Unity games, a
 1. UnityExplorer is installed!
 
 ## Concepts
+
 - `<GameRoot>`: the installation path for the game
 - "plugin": mainly used as a synonym for "mod"
