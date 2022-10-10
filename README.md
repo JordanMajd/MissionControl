@@ -57,7 +57,7 @@ After the required installation is completed:
 We welcome your contributions!
 
 Have a suggestion or want to report a bug?
-1. Search [issues](https://github.com/JordanMajd/MissionControl/issues) to see if the suggestion or bug has already been reports
+1. Search [issues](https://github.com/JordanMajd/MissionControl/issues) to see if the suggestion or bug has already been reported
 1. If it hasn't, open up a [new issue](https://github.com/JordanMajd/MissionControl/issues/new) and provide as detailed of an explanation as you can
 
 Want to help write some code but not sure where to start? 

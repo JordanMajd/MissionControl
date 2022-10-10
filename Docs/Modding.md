@@ -50,6 +50,13 @@ Once the prerequisites have been completed you are ready to install Mission Cont
 1. Create the folder `MissionControl` in `<GameRoot>/BepinEx/plugins/` if it doesn't exist.
 1. Copy the downloaded file to `<GameRoot>/BepinEx/plugins/MissionControl`.
     - The final folder structure should look like: `<GameRoot>/BepinEx/plugins/MissionControl/MissionControl-X.dll`, where `X` is the version.
+1. Mission Control is now installed!
+
+Now that the mod is installed, you can add custom parts. To use the examples available in this repository:
+1. Download all assets in the [Examples](https://github.com/JordanMajd/MissionControl/tree/master/Examples) folder (you can do so automatically [here](https://download-directory.github.io/?url=https%3A%2F%2Fgithub.com%2FJordanMajd%2FMissionControl%2Ftree%2Fmaster%2FExamples)).
+1. Copy them all to `<GameRoot>/Mars First Logistics_Data/ModResources`.
+1. The parts are now installed!
+    - You will need to use the "Unlock all parts" cheat in order to see them in the "Edit Vehicle" scene.
 
 ℹ️ If you are interested in building and running the project manually please see [Compiling on your own](/README.md#Compiling-on-your-own). ℹ️ 
 
