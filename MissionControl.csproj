@@ -1,10 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <VersionPrefix>0.0.1</VersionPrefix>
     <VersionSuffix>alpha</VersionSuffix>
   </PropertyGroup>
-
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
     <AssemblyName>MissionControl-$(VersionPrefix)-$(VersionSuffix)</AssemblyName>
@@ -17,9 +15,7 @@
     </RestoreAdditionalProjectSources>
     <RootNamespace>MissionControl</RootNamespace>
   </PropertyGroup>
-
   <Import Project="MC.props" />
-
   <ItemGroup>
     <!-- <EmbeddedResource Include="Resources\test.txt" />
     <EmbeddedResource Include="Resources\tire.unity3d" />
@@ -29,7 +25,6 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content> -->
   </ItemGroup>
-
   <ItemGroup>
     <PackageReference Include="BepInEx.Unity.IL2CPP" Version="6.0.0-be.*" IncludeAssets="compile" />
     <PackageReference Include="BepInEx.PluginInfoProps" Version="2.*" />
@@ -69,12 +64,18 @@
       <HintPath>$(GAME_PATH)\BepInEx\interop\Assembly-CSharp.dll</HintPath>
     </Reference>
   </ItemGroup>
-
   <Target Name="Deploy" DependsOnTargets="Build">
-    <Copy SourceFiles="$(TargetDir)/$(AssemblyName).dll" DestinationFolder="$(PLUGIN_PATH)" />
-  </Target>
-  <Target Name="Deploy" DependsOnTargets="Build">
-    <Copy SourceFiles="$(TargetDir)/$(AssemblyName).dll" DestinationFolder="$(PLUGIN_PATH)" />
+    <ItemGroup>
+      <FilesToDelete Include="$(PLUGIN_PATH)\MissionControl*.dll"/>
+    </ItemGroup>
+    <Delete Files="@(FilesToDelete)">
+      <Output TaskParameter="DeletedFiles" ItemName="DeletedList"/>
+    </Delete>
+    <Message Text="Deleted files: '@(DeletedList)'" Importance="high"/>
+    <Copy SourceFiles="$(TargetDir)\$(AssemblyName).dll" DestinationFolder="$(PLUGIN_PATH)">
+      <Output TaskParameter="CopiedFiles" ItemName="CopiedList" />
+    </Copy>
+    <Message Text="Copied files: '@(CopiedList)'" Importance="high"/>
   </Target>
   <Target Name="Examples">
     <Copy SourceFiles="Examples/example-pack.json" DestinationFolder="$(DATA_PATH)/ModResources" />
