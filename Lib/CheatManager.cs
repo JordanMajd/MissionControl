@@ -10,6 +10,8 @@ namespace MissionControl;
 // - SetSaveFile
 public class CheatManager : MonoBehaviour
 {
+  private bool currentGravity = true;
+
   public void Awake()
   {
     gameObject.name = "CheatManager";
@@ -26,25 +28,16 @@ public class CheatManager : MonoBehaviour
       CheatUIManager.ToggleMenu();
   }
 
-  public void DisableGravity()
-  {
-    GameObject vehicle = GameObject.Find("vehicle");
-    ArticulationBody[] bodies = vehicle.GetComponentsInChildren<ArticulationBody>();
-    foreach (var body in bodies)
-    {
-      body.useGravity = false;
-    }
-  }
-
-  public void EnableGravity()
+  public void ToggleGravity()
   {
     // could access Conf.g.player.vehicle.
     GameObject vehicle = GameObject.Find("vehicle");
     ArticulationBody[] bodies = vehicle.GetComponentsInChildren<ArticulationBody>();
     foreach (var body in bodies)
     {
-      body.useGravity = true;
+      body.useGravity = !currentGravity;
     }
+    currentGravity = !currentGravity;
   }
 
   public void UnlockAllParts()
@@ -90,7 +83,6 @@ public class CheatManager : MonoBehaviour
 
 public class CheatUIManager : PanelBase
 {
-
   public static void ToggleMenu()
   {
     if(Instance.Enabled)
@@ -136,13 +128,9 @@ public class CheatUIManager : PanelBase
   {
     UIFactory.SetLayoutGroup<VerticalLayoutGroup>(ContentRoot, true, false, true, true);
 
-    ButtonRef disableGravButton = UIFactory.CreateButton(ContentRoot, "DisableGravityButton", "Disable Gravity");
-    UIFactory.SetLayoutElement(disableGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    disableGravButton.OnClick += OnDisableGravityButtonClick;
-
-    ButtonRef enableGravButton = UIFactory.CreateButton(ContentRoot, "EnableGravityButton", "Enable Gravity");
-    UIFactory.SetLayoutElement(enableGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    enableGravButton.OnClick += OnEnableGravityButtonClick;
+    ButtonRef toggleGravButton = UIFactory.CreateButton(ContentRoot, "ToggleGravityButton", "Toggle Gravity");
+    UIFactory.SetLayoutElement(toggleGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
+    toggleGravButton.OnClick += OnToggleGravityButtonClick;
 
     ButtonRef unlockButton = UIFactory.CreateButton(ContentRoot, "UnlockPartsButton", "Unlock All Parts");
     UIFactory.SetLayoutElement(unlockButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
@@ -173,19 +161,11 @@ public class CheatUIManager : PanelBase
     }
   }
 
-  protected static void OnDisableGravityButtonClick()
+  protected static void OnToggleGravityButtonClick()
   {
     if (cheatManager != null)
     {
-      cheatManager.DisableGravity();
-    }
-  }
-
-  protected static void OnEnableGravityButtonClick()
-  {
-    if (cheatManager != null)
-    {
-      cheatManager.EnableGravity();
+      cheatManager.ToggleGravity();
     }
   }
 
