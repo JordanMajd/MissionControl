@@ -1,6 +1,6 @@
 # Mission Control 🚀
 
-Mission Control is set of modding tools and utilities for [Mars: First Logistics Demo](https://store.steampowered.com/app/1532200/Mars_First_Logistics/), built for the community and by the community.
+Mission Control is set of modding tools and utilities for [Mars First Logistics Demo](https://store.steampowered.com/app/1532200/Mars_First_Logistics/), built for the community and by the community.
 
 ⚠ This softwave is experimental ALPHA, we are working towards a stable API but we are nowhere near. But right now we are just thorwing things at walls and seeing what sticks. Structure will come with time. Expect breaking changes.
 
@@ -18,7 +18,7 @@ Current / In Progress:
   - Set max speed 99999
   - Remove build limit
 - Asset Utils: Tools to load assets, textures, meshes
-- Localization Manager: load & manage localization strings for custom parts]
+- Localization Manager: load & manage localization strings for custom parts
 
 Future:
 - Contract Manager
@@ -27,14 +27,22 @@ Future:
 
 ## Getting Started
 
-See the section on [Modding](/Docs/Modding.md) for more information on setting up BepinEX.
+### Applying the mod
 
-1. Install [BepinEx v6 IL2CPP](https://builds.bepinex.dev/projects/bepinex_be)
-1. Install [UniverseLib IL2CPP](https://github.com/sinai-dev/UniverseLib)
-1. You can build and copy the dll to your game by running `dotnet build /t:Deploy`
-1. You can copy an example parts pack to your game by running `dotnet build /t:Examples`
+There are two main requirements:
+- [BepInEx](https://github.com/BepInEx/BepInEx/releases), a tool that enables modding in Unity games
+- [UniverseLib](https://github.com/sinai-dev/UniverseLib), or in its defect [UnityExplorer](https://github.com/sinai-dev/UnityExplorer), which bundles the prior
 
-The project tries to find your game install, but if you need to configure it you can create `Env.props` file and provide it with a path to your game install:
+For more details, please see the [Modding](/Docs/Modding.md) documentation.
+
+### Compiling on your own
+
+Since the project uses your game installation as the source for libraries, the same requirements as in the previous section are in place. Refer to [Installing BepInEx](/Docs/Modding.md#installing-bepinex) and [Adding UniverseLib](/Docs/Modding.md#adding-universelib) for further documentation. 
+
+After the required installation is completed:
+1. Build and copy the dll to your game by running `dotnet build /t:Deploy`
+1. Copy an example parts pack to your game by running `dotnet build /t:Examples`
+1. Create an `Env.props` file if your game installation path is not the default Steam path. The file should look as follows:
 
 ```
 <Project>

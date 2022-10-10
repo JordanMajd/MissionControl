@@ -1,4 +1,5 @@
-﻿
+﻿using UnityEngine;
+
 using BepInEx;
 using BepInEx.Logging;
 using BepInEx.Unity.IL2CPP;
@@ -6,7 +7,6 @@ using BepInEx.Configuration;
 
 using HarmonyLib;
 
-using System.Threading.Tasks;
 namespace MissionControl;
 using MissionControl.Patches;
 
@@ -36,14 +36,30 @@ public class MissionControlPlugin : BasePlugin
 
     PartsManager pm = AddComponent<PartsManager>();
 
-    // late mount components
-    AddDelayedComponents();
+    MissionControlPlugin.Log.LogInfo("UniverseLib start");
+
+    // default config for UniverseLib (https://github.com/sinai-dev/UniverseLib/wiki/Initialization)
+    float startupDelay = 1f;
+    UniverseLib.Config.UniverseLibConfig config = new()
+    {
+        Disable_EventSystem_Override = false, // or null
+        Force_Unlock_Mouse = true, // or null
+        Unhollowed_Modules_Folder = System.IO.Path.Combine(BepInEx.Paths.BepInExRootPath, "interop") // or null
+    };
+
+    // init UniverseLib and do late mount components
+    UniverseLib.Universe.Init(startupDelay, AddDelayedComponents, LogHandler, config);
   }
-  async void AddDelayedComponents()
+  void AddDelayedComponents()
   {
-    await Task.Delay(5000);
+    MissionControlPlugin.Log.LogInfo("Adding late mounts");
     LocalizationManager lm = AddComponent<LocalizationManager>();
     CheatManager cm = AddComponent<CheatManager>();
+  }
+
+  void LogHandler(string message, LogType type) 
+  {
+    MissionControlPlugin.Log.LogInfo(message);
   }
 }
 

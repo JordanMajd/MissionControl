@@ -10,6 +10,8 @@ namespace MissionControl;
 // - SetSaveFile
 public class CheatManager : MonoBehaviour
 {
+  private bool currentGravity = true;
+
   public void Awake()
   {
     gameObject.name = "CheatManager";
@@ -23,28 +25,19 @@ public class CheatManager : MonoBehaviour
   public void Update()
   {
     if (InputManager.GetKeyDown(KeyCode.F8))
-      CheatUIManager.ShowMenu();
+      CheatUIManager.ToggleMenu();
   }
 
-  public void DisableGravity()
-  {
-    GameObject vehicle = GameObject.Find("vehicle");
-    ArticulationBody[] bodies = vehicle.GetComponentsInChildren<ArticulationBody>();
-    foreach (var body in bodies)
-    {
-      body.useGravity = false;
-    }
-  }
-
-  public void EnableGravity()
+  public void ToggleGravity()
   {
     // could access Conf.g.player.vehicle.
     GameObject vehicle = GameObject.Find("vehicle");
     ArticulationBody[] bodies = vehicle.GetComponentsInChildren<ArticulationBody>();
     foreach (var body in bodies)
     {
-      body.useGravity = true;
+      body.useGravity = !currentGravity;
     }
+    currentGravity = !currentGravity;
   }
 
   public void UnlockAllParts()
@@ -90,12 +83,59 @@ public class CheatManager : MonoBehaviour
 
 public class CheatUIManager : PanelBase
 {
+  public static void ToggleMenu()
+  {
+    if(Instance.Enabled)
+      HideMenu();
+    else
+      ShowMenu();
+  }
 
   public static void ShowMenu()
   {
     UniversalUI.SetUIActive(MyPluginInfo.PLUGIN_GUID, true);
     Instance.SetActive(true);
   }
+
+  public static void HideMenu()
+  {
+    UniversalUI.SetUIActive(MyPluginInfo.PLUGIN_GUID, false);
+    Instance.SetActive(false);
+  }
+  
+  struct CheatButton
+  {
+    public string name;
+    public string text;
+    public int height;
+    public System.Action action;
+
+    public CheatButton(string buttonName, string buttonText, int buttonHeight, System.Action buttonAction)
+    {
+      name = buttonName;
+      text = buttonText;
+      height = buttonHeight;
+      action = buttonAction;
+    }
+  }
+
+  static CheatButton[] cheatButtons = new CheatButton[]{
+    new CheatButton("ToggleGravityButton", "Toggle Gravity", 35, OnToggleGravityButtonClick),
+    new CheatButton("UnlockPartsButton", "Unlock All Parts", 35, OnUnlockAllPartsButtonClick),
+    new CheatButton("GivePartsButton", "Give 9999 of Each Part", 35, OnGivePartsButtonClick),
+    new CheatButton("GiveFundsButton", "Give $999,999", 35, OnGiveFundsButtonClick),
+    new CheatButton("MaxSpeedButton", "Set Max Speed 9999.9", 35, OnMaxSpeedButtonClick),
+    new CheatButton("RemoveBuildLimitButton", "Remove Build Limit", 35, OnRemoveBuildLimitButtonClick),
+  };
+
+  static System.Func<int> GetTotalButtonHeight = () =>
+  {
+    int sum = 33;
+    foreach(CheatButton button in cheatButtons){
+      sum += button.height + 2;
+    }
+    return sum;
+  };
 
   static CheatManager cheatManager;
   static UIBase uiBase;
@@ -106,7 +146,7 @@ public class CheatUIManager : PanelBase
   }
   public override string Name => "Mission Control: Cheat Manager";
   public override int MinWidth => 200;
-  public override int MinHeight => 300;
+  public override int MinHeight => GetTotalButtonHeight();
 
   public override Vector2 DefaultAnchorMin => new(0.2f, 0.02f);
   public override Vector2 DefaultAnchorMax => new(0.4f, 0.04f);
@@ -122,36 +162,14 @@ public class CheatUIManager : PanelBase
   {
     UIFactory.SetLayoutGroup<VerticalLayoutGroup>(ContentRoot, true, false, true, true);
 
-    ButtonRef disableGravButton = UIFactory.CreateButton(ContentRoot, "DisableGravityButton", "Disable Gravity");
-    UIFactory.SetLayoutElement(disableGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    disableGravButton.OnClick += OnDisableGravityButtonClick;
-
-    ButtonRef enableGravButton = UIFactory.CreateButton(ContentRoot, "EnableGravityButton", "Enable Gravity");
-    UIFactory.SetLayoutElement(enableGravButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    enableGravButton.OnClick += OnEnableGravityButtonClick;
-
-    ButtonRef unlockButton = UIFactory.CreateButton(ContentRoot, "UnlockPartsButton", "Unlock All Parts");
-    UIFactory.SetLayoutElement(unlockButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    unlockButton.OnClick += OnUnlockAllPartsButtonClick;
-
-    ButtonRef givePartsButton = UIFactory.CreateButton(ContentRoot, "GivePartsButton", "Give 9999 of Each Part");
-    UIFactory.SetLayoutElement(givePartsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    givePartsButton.OnClick += OnGivePartsButtonClick;
-
-    ButtonRef giveFundsButton = UIFactory.CreateButton(ContentRoot, "GiveFundsButton", "Give $999,999");
-    UIFactory.SetLayoutElement(giveFundsButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    giveFundsButton.OnClick += OnGiveFundsButtonClick;
-
-    ButtonRef maxSpeedButton = UIFactory.CreateButton(ContentRoot, "MaxSpeedButton", "Set Max Speed 9999.9");
-    UIFactory.SetLayoutElement(maxSpeedButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    maxSpeedButton.OnClick += OnMaxSpeedButtonClick;
-
-    ButtonRef removeBuildLimitButton = UIFactory.CreateButton(ContentRoot, "RemoveBuildLimitButton", "Remove Build Limit");
-    UIFactory.SetLayoutElement(removeBuildLimitButton.Component.gameObject, minHeight: 35, flexibleHeight: 0, flexibleWidth: 9999);
-    removeBuildLimitButton.OnClick += OnRemoveBuildLimitClick;
+    foreach(CheatButton button in cheatButtons){
+      ButtonRef buttonRef = UIFactory.CreateButton(ContentRoot, button.name, button.text);
+      UIFactory.SetLayoutElement(buttonRef.Component.gameObject, minHeight: button.height, flexibleHeight: 0, flexibleWidth: 9999);
+      buttonRef.OnClick += button.action;
+    }
   }
 
-  protected static void OnRemoveBuildLimitClick()
+  protected static void OnRemoveBuildLimitButtonClick()
   {
     if (cheatManager != null)
     {
@@ -159,19 +177,11 @@ public class CheatUIManager : PanelBase
     }
   }
 
-  protected static void OnDisableGravityButtonClick()
+  protected static void OnToggleGravityButtonClick()
   {
     if (cheatManager != null)
     {
-      cheatManager.DisableGravity();
-    }
-  }
-
-  protected static void OnEnableGravityButtonClick()
-  {
-    if (cheatManager != null)
-    {
-      cheatManager.EnableGravity();
+      cheatManager.ToggleGravity();
     }
   }
 
