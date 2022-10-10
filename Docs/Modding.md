@@ -64,8 +64,6 @@ Now that the mod is installed, you can add custom parts. To use the examples ava
 
 [UnityExplorer](https://github.com/sinai-dev/UnityExplorer) is a tool that allows players to explore and modify Unity games, a very handy plugin for those wanting to play around and learn the internals of Mars First Logistics.
 
-⚠ UnityExplorer does not offer full functionality due to the use of .NET 6.0. ⚠
-
 1. Download this [this precompiled version of UnityExplorer](https://locoserver.net/dl/unityexplorer_bie6.zip).
     - Ideally the [latest UnityExplorer IL2CPP CoreCLR version](https://github.com/sinai-dev/UnityExplorer/releases/latest/download/UnityExplorer.BepInEx.IL2CPP.CoreCLR.zip) would be used, but [issues with .NET 6.0](https://github.com/sinai-dev/UnityExplorer/issues/169#issuecomment-1251730571]) force the use of this precompiled version.
 1. Unzip the contents of the download.
