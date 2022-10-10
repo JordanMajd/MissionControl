@@ -1,8 +1,8 @@
 # Modding Mars First Logistics Demo
 
-⚠ Do at your own risk. It is recommended to back up the game before modifying ⚠
+⚠ Do at your own risk. It is recommended to back up the game before modifying. ⚠
 
-These instructions are for Windows, however the same procedure works for all platforms by using the appropriate dll for your platform.
+These instructions are for Windows, however the same procedure works for all platforms by using the appropriate dll.
 
 ## Installing BepInEx
 
@@ -23,7 +23,7 @@ In order to install any mods, we must first install Bepinex:
 
 UniverseLib is a required library with a focus on UI which Mission Control makes use of for some of its features. 
 
-ℹ️ You can also [setup UnityExplorer](#setup-unityexplorer), which is a mod that has this library bundled in it ℹ️
+ℹ️ You can also [setup UnityExplorer](#setup-unityexplorer), which is a mod that has this library bundled in it. ℹ️
 
 1. Download this [this precompiled version of UnityExplorer](https://locoserver.net/dl/unityexplorer_bie6.zip)
     - Ideally the [UniverseLib IL2CPP Interop version](https://github.com/sinai-dev/UniverseLib) would be used, but [issues with NET 6.0](https://github.com/sinai-dev/UnityExplorer/issues/169#issuecomment-1251730571]) force the use of this precompiled version
@@ -45,7 +45,7 @@ TODO: How to install [Mission Control](https://github.com/JordanMajd/MissionCont
 
 UnityExplorer is a tool that allows players to explore and modify Unity games, a very handy plugin for those wanting to play around and learn the internals of Mars First Logistics.
 
-⚠ UnityExplorer does not offer full functionality due to the use of NET 6.0 ⚠
+⚠ UnityExplorer does not offer full functionality due to the use of NET 6.0. ⚠
 
 1. Download this [this precompiled version of UnityExplorer](https://locoserver.net/dl/unityexplorer_bie6.zip)
     - Ideally the [UnityExplorer IL2CPP CoreCLR version](https://github.com/sinai-dev/UnityExplorer) would be used, but [issues with NET 6.0](https://github.com/sinai-dev/UnityExplorer/issues/169#issuecomment-1251730571]) force the use of this precompiled version
