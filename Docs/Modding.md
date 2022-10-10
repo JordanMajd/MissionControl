@@ -2,15 +2,16 @@
 
 ⚠ Do at your own risk. It is recommended to back up the game before modifying. ⚠
 
-These instructions are for Windows, however the same procedure works for all platforms by using the appropriate dll.
+These instructions are for Windows x64, however the same procedure works for all platforms by using the appropriate dll.
 
 ## Installing BepInEx
 
 In order to install any mods, we must first install Bepinex:
 
 1. If you don't already have a .Net 6 SDK installed, navigate to [Latest .Net Releases](https://dotnet.microsoft.com/en-us/download) to download and run the installer for your platform
-1. Download the [latest BepInEx Edge release](https://builds.bepinex.dev/projects/bepinex_be) (**IL2CPP version, not mono**) for Windows (x64):
-    - File name should have `IL2CPP` in it and look similar to this: `BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.660+XXXXXXX.zip`, where the `X` represent alphanumeric characters
+1. Download BepinEX Edge #656
+    - [Windows x64 Download](https://builds.bepinex.dev/projects/bepinex_be/656/BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.656%2Bb3485f4.zip)
+    - If you are installing for another platform you can find [the correct release here](https://builds.bepinex.dev/projects/bepinex_be). Please ensure you download version `656`, the file name should have `IL2CPP` in it and look similar to this: `BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.656+XXXXXXX.zip`, where the `X` represent alphanumeric characters and `win/x64` are replaced by your platform.
     - Do not use the [latest GitHub release](https://github.com/BepInEx/BepInEx/releases) as it will not work due to the use of NET 6.0
 1. Locate your `<GameRoot>`. 
     - You can do this by opening Steam and navigating to Library → Mars First Logistics Demo → Right Click → Properties → Game Files → Browse
@@ -18,7 +19,7 @@ In order to install any mods, we must first install Bepinex:
 1. Run the game either from Steam or from the `<GameRoot>` folder by clicking on `Mars First Logistics.exe` to generate the BepInEx files
 1. After the game runs you may close it
 1. You are now ready to install any mods you want!
-    - If you are looking to compile Mission Control on your own, continue reading [Adding UniverseLib](#adding-universelib)
+    - If you are looking to install Mission Control, continue reading [Adding UniverseLib](#adding-universelib)
 
 ### Adding UniverseLib
 
