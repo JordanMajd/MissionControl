@@ -8,6 +8,7 @@ These instructions are for Windows, however the same procedure works for all pla
 
 In order to install any mods, we must first install Bepinex:
 
+1. If you don't already have a .Net 6 SDK installed, navigate to [Latest .Net Releases](https://dotnet.microsoft.com/en-us/download) to download and run the installer for your platform
 1. Download the [latest BepInEx Edge release](https://builds.bepinex.dev/projects/bepinex_be) (**IL2CPP version, not mono**) for Windows (x64):
     - File name should have `IL2CPP` in it and look similar to this: `BepInEx-Unity.IL2CPP-win-x64-6.0.0-be.660+XXXXXXX.zip`, where the `X` represent alphanumeric characters
     - Do not use the [latest GitHub release](https://github.com/BepInEx/BepInEx/releases) as it will not work due to the use of NET 6.0
@@ -46,6 +47,8 @@ Please ensure you have completed the prerequesite steps:
 Once the prerequisites have been completed you are ready to install Mission Contorl:
 1. Download the latest .dll (example: `MissionControl-0.0.1-alpha.dll`) from [Releases](https://github.com/JordanMajd/MissionControl/releases)
 1. Copy it to `<GameRoot>/BepinEx/plugins/MissionControl/`
+
+ℹ️ If you are interested in building and running the project manually please see [Compiling on your own](/README.md#Compiling-on-your-own) ℹ️ 
 
 ### Setup UnityExplorer
 
