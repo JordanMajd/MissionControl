@@ -23,7 +23,7 @@ public class CheatManager : MonoBehaviour
   public void Update()
   {
     if (InputManager.GetKeyDown(KeyCode.F8))
-      CheatUIManager.ShowMenu();
+      CheatUIManager.ToggleMenu();
   }
 
   public void DisableGravity()
@@ -91,10 +91,24 @@ public class CheatManager : MonoBehaviour
 public class CheatUIManager : PanelBase
 {
 
+  public static void ToggleMenu()
+  {
+    if(Instance.Enabled)
+      HideMenu();
+    else
+      ShowMenu();
+  }
+
   public static void ShowMenu()
   {
     UniversalUI.SetUIActive(MyPluginInfo.PLUGIN_GUID, true);
     Instance.SetActive(true);
+  }
+
+  public static void HideMenu()
+  {
+    UniversalUI.SetUIActive(MyPluginInfo.PLUGIN_GUID, false);
+    Instance.SetActive(false);
   }
 
   static CheatManager cheatManager;
