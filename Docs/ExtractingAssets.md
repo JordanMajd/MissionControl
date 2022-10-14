@@ -1,5 +1,7 @@
 # Extracting Assets / Meshes
 
+**Friendly reminder, all assets are copyright Shape Shop. It's okay for us to use them for personal use, but we may not distribute them or reproductions of them**
+
 The easiest way to extract assets from the game is via [AssetStudio](https://github.com/Perfare/AssetStudio) 
 
 1. Open AssetStudio
